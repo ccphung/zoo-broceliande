@@ -41,12 +41,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?role $role = null;
+    private ?Role $role = null;
 
     /**
      * @var Collection<int, vetReport>
      */
-    #[ORM\OneToMany(targetEntity: vetReport::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: VetReport::class, mappedBy: 'user')]
     private Collection $vetReport;
 
     public function __construct()
@@ -172,7 +172,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->vetReport;
     }
 
-    public function addVetReport(vetReport $vetReport): static
+    public function addVetReport(VetReport $vetReport): static
     {
         if (!$this->vetReport->contains($vetReport)) {
             $this->vetReport->add($vetReport);
@@ -182,7 +182,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeVetReport(vetReport $vetReport): static
+    public function removeVetReport(VetReport $vetReport): static
     {
         if ($this->vetReport->removeElement($vetReport)) {
             // set the owning side to null (unless already changed)
