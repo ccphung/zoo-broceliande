@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -36,6 +38,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 50)]
     private ?string $firstname = null;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?role $role = null;
+
+    /**
+     * @var Collection<int, vetReport>
+     */
+    #[ORM\OneToMany(targetEntity: vetReport::class, mappedBy: 'user')]
+    private Collection $vetReport;
+
+    public function __construct()
+    {
+        $this->vetReport = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -131,6 +148,48 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstname(string $firstname): static
     {
         $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getRole(): ?role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?role $role): static
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, vetReport>
+     */
+    public function getVetReport(): Collection
+    {
+        return $this->vetReport;
+    }
+
+    public function addVetReport(vetReport $vetReport): static
+    {
+        if (!$this->vetReport->contains($vetReport)) {
+            $this->vetReport->add($vetReport);
+            $vetReport->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVetReport(vetReport $vetReport): static
+    {
+        if ($this->vetReport->removeElement($vetReport)) {
+            // set the owning side to null (unless already changed)
+            if ($vetReport->getUser() === $this) {
+                $vetReport->setUser(null);
+            }
+        }
 
         return $this;
     }
