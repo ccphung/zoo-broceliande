@@ -32,7 +32,7 @@ class Animal
     /**
      * @var Collection<int, vetreport>
      */
-    #[ORM\OneToMany(targetEntity: vetreport::class, mappedBy: 'animal')]
+    #[ORM\OneToMany(targetEntity: vetReport::class, mappedBy: 'animal')]
     private Collection $vetReport;
 
     public function __construct()
