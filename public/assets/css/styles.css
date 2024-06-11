@@ -70,8 +70,13 @@ h1 {
 }
 
 @media screen and (width > 992px){
-    .nav-link {
+    .nav-item, .dropdown-menu {
         margin-right: 20px;
+    }
+
+    .nav-link.dropdown-toggle {
+        white-space: normal;
+        word-break: break-word;
     }
 
     .hero {
