@@ -1,3 +1,8 @@
+@import url('nav.css');
+@import url('home.css');
+@import url('habitat.css');
+@import url('footer.css');
+
 /* Body */
 body {
     font-family: "Lato", sans-serif;
@@ -43,7 +48,7 @@ body {
     color:rgb(229, 223, 47);
 }
 
-.circle {
+.large-circle {
     margin-top: 20px;
     margin-left: 20px;
     width: 500px;
@@ -52,109 +57,17 @@ body {
     overflow: hidden;
 }
 
-/* Home page */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 83vh;
+.medium-circle {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 300px;
+    height: 300px;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     overflow: hidden;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-.hero-image {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    filter:brightness(80%);
-}
-
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    text-align: center;
-  }
-
-.resize-img {
-    width: 1000px;
-    display: block; 
-    margin: auto;
-}
-
-.habitat-img {
-    margin-left: -100px;
-    margin-top: -100px;
-    transition: opacity 0.5s ease-out;
-}
-
-.habitat-section {
-    display:flex;
-    justify-content: center;
-    background-image: url('../../images/bg/yellow-painting.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.habitat-img:hover {
-    opacity: calc(0.4);
-    transition: 0.5s;
-    transform: scale(1.1);
-}
-
-/* Navbar */
-.navbar {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.logo {
-    height: 4em;
-}
-
-.nav-link {
-    font-size: 1.5em;
-    font-family: "Lora", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.dropdown-menu {
-    border: 0px;
-    background: #e6aeae;
-}
-
-.dropdown-item {
-    color: white;
-    font-family: "Lora", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
 }
 
 @media screen and (width > 992px){
-    .nav-item, .dropdown-menu {
-        margin-right: 20px;
-    }
-
-    .nav-link.dropdown-toggle {
-        white-space: normal;
-        word-break: break-word;
-    }
-
     .hidden {
         display:block;
     }
-}
-
-
-/* Footer */
-
-footer {
-    background: #162b1a;
 }
