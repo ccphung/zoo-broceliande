@@ -55,9 +55,23 @@ h1 {
     font-style: normal;
 }
 
+.dropdown-menu {
+    border: 0px;
+    background: #e6aeae;
+}
+
+.dropdown-item {
+    color: white;
+    font-size: 1.2em;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
 @media screen and (width > 992px){
     .nav-link {
-        margin-right: 25px;
+        margin-right: 20px;
     }
 
     .hero {
@@ -66,3 +80,8 @@ h1 {
 }
 
 
+/* Footer */
+
+footer {
+    background: #0d7373;
+}
