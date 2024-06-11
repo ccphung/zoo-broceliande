@@ -4,14 +4,24 @@
 
 {% block body %}
 
-<div class="hero">
+<div class="hero hidden">
     <img src="{{ asset('images/hero/hero.jpg') }}"  class="hero-image" alt="hero image"> 
-        <div class="hero-content">
+        <div class="hero-content large-font">
             Offrez vous une visite inoubiable
         </div>
 </div>
 
-<div class="circle">
+<div class="habitat-section m-5">
+    <div class="circle hidden">
+            <a href="#">
+                <img class="resize-img habitat-img" src="{{ asset('images/animal/lion.jpg') }}" alt="">
+            </a>
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <h2 class="medium-font patrick-hand">Les merveilleux habitats</h2>
+        <p class="small-font">Découvrez les divers habitats et les animaux qui y vivent</p>
+        <a href="" class="btn btn-blue">Je découvre les habitats ></a>
+    </div>
 </div>
 
 <h1>Visite guidée du Zoo</h1>
