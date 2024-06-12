@@ -50,3 +50,7 @@
     transition: 0.5s;
     transform: scale(1.1);
 }
+
+.service-section {
+    background: #0D2831;
+}
