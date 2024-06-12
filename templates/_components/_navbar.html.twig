@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{ path('app_home') }}">
       <img src="{{ asset('images/logo/logo.png') }}" class="logo" alt="logo">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,14 +9,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+          <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Préparer sa venue
           </a>
           <ul class="dropdown-menu">
-            <img src="{{ asset('images/logo.png')}}" alt="">
             <li><a class="dropdown-item" href="#">Voir les horaires</a></li>
             <li><a class="dropdown-item" href="#">Où nous trouver</a></li>
             <li><a class="dropdown-item" href="#">Les tarifs</a></li>
@@ -26,7 +25,7 @@
           <a class="nav-link" href="#">Les services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Les habitats</a>
+          <a class="nav-link" href="{{ path('app_habitat') }}">Les habitats</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
