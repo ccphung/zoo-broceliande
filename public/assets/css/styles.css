@@ -11,7 +11,7 @@ body {
     font-size: 1.2em;
 }
 
-/* Components */
+/* Font */
 .raleway {
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
@@ -27,15 +27,18 @@ body {
     font-size: 3em;
 }
 
+/* Display */
 .hidden {
     display: none;
 }
 
+
+/* Button */
 .btn-blue {
     font-size: 1.2em;
-    background: #204026;
+    background: #173833;
     border-radius: 25px;
-    color:rgb(229, 223, 47);
+    color:#DEAF00;
     padding-left: 20px;
     padding-right: 20px;
     transition: transform 0.3s ease;
@@ -44,10 +47,28 @@ body {
 
 .btn-blue:hover {
     transform: translateY(-2px);   
-    background: #204026;
-    color:rgb(229, 223, 47);
+    background: #173833;
+    color:#DEAF00;
 }
 
+.btn-yellow {
+    font-size: 1.2em;
+    background: #DEAF00;
+    border-radius: 25px;
+    color:#0D2831;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: transform 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.btn-yellow:hover {
+    transform: translateY(-2px);   
+    background: #DEAF00;
+    color:#0D2831;
+}
+
+/* Geometric shape */
 .large-circle {
     margin-top: 20px;
     margin-left: 20px;
@@ -55,6 +76,7 @@ body {
     height: 500px;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     overflow: hidden;
+    position: relative;
 }
 
 .medium-circle {
@@ -66,6 +88,16 @@ body {
     overflow: hidden;
 }
 
+.large-rectangle {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 500px;
+    height: 500px;
+    clip-path: polygon(87.51% 83.07%,52.57% 90.92%,16.93% 87.51%,9.08% 52.57%,12.49% 16.93%,47.43% 9.08%,83.07% 12.49%,90.92% 47.43%);
+    overflow: hidden;
+}
+
+/* Media queries */
 @media screen and (width > 992px){
     .hidden {
         display:block;
