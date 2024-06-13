@@ -6,7 +6,6 @@
 /* Body */
 body, html {
     height: 100%;
-    margin: 0;
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -112,10 +111,20 @@ body, html {
     overflow: hidden;
 }
 
+.service-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
 
 /* Media queries */
 @media screen and (width > 992px){
     .hidden {
         display:block;
+    }
+
+    .service-section {
+        padding-left: 200px;
     }
 }
