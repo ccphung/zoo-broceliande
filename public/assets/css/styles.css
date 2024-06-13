@@ -26,17 +26,16 @@ body, html {
 }
 
 .large-font {   
-    font-size: 3em;
+    font-size: 4em;
 }
 
 .medium-font {
-    font-size: 1.3em;
+    font-size: 2em;
 }
 
 .small-font {
-    font-size: 0.9em;
+    font-size: 1.2em;
 }
-
 
 /* Color */
 .yellow {
@@ -47,6 +46,9 @@ body, html {
     color:#297F9C;
 }
 
+.dark-blue {
+    color:#103244;
+}
 /* Image */
 .large-img {
     width: 1000px;
@@ -121,8 +123,8 @@ body, html {
 .medium-circle {
     margin-top: 20px;
     margin-left: 20px;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: auto;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     overflow: hidden;
 }
