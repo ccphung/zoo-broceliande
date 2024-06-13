@@ -36,9 +36,13 @@ body, html {
     color:#DEAF00;
 }
 
+.light-blue {
+    color:#297F9C;
+}
+
 /* Display */
 .hidden {
-    display: hidden;
+    display: none;
 }
 
 /* Button */
