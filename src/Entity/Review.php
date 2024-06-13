@@ -26,6 +26,12 @@ class Review
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $date = null;
 
+    public function __construct()
+    {
+        $this->date = new \DateTimeImmutable();
+        $this->isVisible = false;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
