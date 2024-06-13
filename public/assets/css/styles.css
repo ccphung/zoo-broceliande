@@ -18,6 +18,12 @@ body, html {
     font-style: normal;
 }
 
+.englebert-regular {
+    font-family: "Englebert", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .large-font {   
     font-size: 3em;
 }
