@@ -68,7 +68,25 @@ body, html {
 /* Button */
 .btn-blue {
     font-size: 1.2em;
-    background: #173833;
+    background: #297F9C;
+    border-radius: 25px;
+    color: #FFFF;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: transform 0.3s ease;
+    margin-bottom: 5px;
+}
+
+
+.btn-blue:hover {
+    transform: translateY(-2px);   
+    background: #297F9C;
+    color: #ffff;
+}
+
+.btn-green {
+    font-size: 1.2em;
+    background: #373817;
     border-radius: 25px;
     color:#DEAF00;
     padding-left: 20px;
@@ -76,6 +94,7 @@ body, html {
     transition: transform 0.3s ease;
     margin-bottom: 5px;
 }
+
 
 .hover-translate {
     display: inline-block;
@@ -86,7 +105,7 @@ body, html {
     transform: translateY(-4px);  
 }
 
-.btn-blue:hover {
+.btn-green:hover {
     transform: translateY(-2px);   
     background: #173833;
     color:#DEAF00;
