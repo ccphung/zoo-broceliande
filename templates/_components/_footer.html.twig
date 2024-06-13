@@ -1,10 +1,28 @@
-<footer>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    
+<footer class="footer">
+    {# <div class="container-fluid">
+        <div class="row"> #}
+        {# Logo #}
+            <div class="col-lg-3 col-sm-12 d-flex justify-content-center align-items-center">
+                <img src="{{ asset('images/logo/logo.png') }}" alt="logo" class="logo-footer align-self-center">
+            </div>
+            <div class="col-lg-3 col-sm-6 col-xs-12 d-flex justify-content-center flex-column align-items-center">
+                <ul class="list-unstyled">    
+                    <li class="fw-bold"><p class="text-white m-0 text-center letter-spacing">Informations</p></li>
+                    <a href="">Nous trouver ici</a>
+                    <li><p class="text-white text-center">Tél : 01 39 82 05 90</p></li>
+                    <li class="text-center"><a href="" class="text-white m-0">Nous contacter</a></li>
+                </ul>   
+            </div>
+        {# Socials #}
+            <div class="col-lg-3 col-md-12 d-flex flex-column justify-content-center align-items-center letter-spacing">
+                <p class="text-center text-white socials-text fw-bold">Suivez-nous sur les réseaux !</p>
+                <div class="socials">
+                    <img class="m-2" src="{{ asset('images/logo/instagram.svg') }}" alt="logo instagram">
+                    <img class="m-2" src="{{ asset('images/logo/twitter.svg') }}" alt="logo twitter">
+                    <img class="m-2" src="{{ asset('images/logo/facebook.svg') }}" alt="logo facebook">
+                </div>
+            </div>
+        {# </div>
+    </div> #}
+
 </footer>
