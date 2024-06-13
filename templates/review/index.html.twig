@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Je donne mon avis | Zoo de Brocéliande{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+
+<div class="container m-5 blur">
+    <div class="row">
+        <div class="col-lg-6 hidden">
+            <img src="{{ asset('images/animal/cameleon.jpg') }}" alt="Caméléon" class="medium-circle">
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <h2 class='mt-5 text-center large-font englebert-regular'>Je donne mon avis</h2>
+                    {{ form_start(form) }}
+                        {{ form_label(form.pseudo) }}
+                        {{ form_widget(form.pseudo) }}
+                            {% if form_errors(form.pseudo) %}
+                                <div class="text-danger">
+                                    {{ form_errors(form.pseudo) }}
+                                </div>
+                            {% endif %}
+                        {{ form_label(form.comment) }}
+                        {{ form_widget(form.comment) }}
+                            {% if form_errors(form.comment) %}
+                                <div class="text-danger">
+                                    {{ form_errors(form.comment) }}
+                                </div>
+                            {% endif %}
+                    {{ form_end(form)}}
+        </div>
+    </div>
+    <div>
+        <img src="{{asset('images/bg/plant.png')}}" alt="" class="bg-review">
+    </div>
+</div>
+{% endblock %}
