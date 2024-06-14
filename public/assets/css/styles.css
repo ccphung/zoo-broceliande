@@ -6,10 +6,11 @@
 @import url('review.css');
 
 /* Body */
-body, html {
+body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: normal;
+    overflow-x: hidden;
 }
 
 /* Font */
@@ -28,6 +29,10 @@ body, html {
 
 .large-font {   
     font-size: 4em;
+}
+
+.medium-large-font {
+    font-size: 2.5em;
 }
 
 .medium-font {
@@ -61,12 +66,42 @@ body, html {
     margin: auto;
 }
 
+.full-width {
+    width: 100vw;
+    z-index: -10;
+}
+
 /* Display */
 .hidden {
     display: none;
 }
 
 /* Button */
+.btn-yellow-outline {
+    font-size: 1.2em;
+    border: 3px solid #DEAF00;
+    border-radius: 25px;
+    color: #297F9C;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: transform 0.3s ease;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.btn-yellow-outline:hover {
+    transform: translateY(-2px);   
+    border: 3px solid #DEAF00;
+    color: #297F9C;
+    font-weight: bold;
+}
+
+.btn-blue:hover {
+    transform: translateY(-2px);   
+    background: #DEAF00;
+    color: #297F9C;
+}
+
 .btn-blue {
     font-size: 1.2em;
     background: #297F9C;
@@ -158,10 +193,14 @@ body, html {
     padding-bottom: 50px;
 }
 
-
+.separator {
+    background: #DEAF00;
+    height: 10px;
+    clip-path: polygon(35% 60%, 77% 55%, 98% 66%, 0 68%);
+}
 
 /* Media queries */
-@media screen and (width > 992px){
+@media screen and (min-width : 992px){
     .hidden {
         display:block;
     }
