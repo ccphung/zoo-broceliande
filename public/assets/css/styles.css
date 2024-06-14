@@ -193,7 +193,13 @@ body {
     padding-bottom: 50px;
 }
 
-.separator {
+.blue-separator {
+    background: #0D2831;
+    height: 10px;
+    clip-path: polygon(35% 60%, 77% 55%, 98% 66%, 0 68%);
+}
+
+.yellow-separator {
     background: #DEAF00;
     height: 10px;
     clip-path: polygon(35% 60%, 77% 55%, 98% 66%, 0 68%);
