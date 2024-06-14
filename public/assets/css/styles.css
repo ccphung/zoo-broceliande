@@ -4,6 +4,7 @@
 @import url('footer.css');
 @import url('location.css');
 @import url('review.css');
+@import url('service.css');
 
 /* Body */
 body {
@@ -64,6 +65,10 @@ body {
 .medium-img {
     width: 700px;
     margin: auto;
+}
+
+.full-container-img {
+    height: 100%;
 }
 
 .full-width {
@@ -186,6 +191,12 @@ body {
 .polygon {
     clip-path: polygon(5% 3%, 87% 0%, 88% 88%, 47% 100%, 5% 100%, 0% 50%);
     overflow: hidden;
+}
+
+.small-polygon {
+    clip-path: polygon(5% 3%, 87% 0%, 88% 88%, 47% 100%, 5% 100%, 0% 50%);
+    overflow: hidden;
+    height: 400px;
 }
 
 .service-section {
