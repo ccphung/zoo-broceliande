@@ -30,18 +30,9 @@
     font-style: normal;
 }
 
-@media screen and (width > 992px){
+@media (min-width : 992px) {
     .nav-item, .dropdown-menu {
         margin-right: 20px;
-    }
-
-    .nav-link.dropdown-toggle {
-        white-space: normal;
-        word-break: break-word;
-    }
-
-    .hidden {
-        display:block;
     }
 }
 
