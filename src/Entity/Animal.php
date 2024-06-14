@@ -23,11 +23,11 @@ class Animal
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?habitat $habitat = null;
+    private ?Habitat $habitat = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?species $species = null;
+    private ?Species $species = null;
 
     /**
      * @var Collection<int, vetreport>
@@ -69,24 +69,24 @@ class Animal
         return $this;
     }
 
-    public function getHabitat(): ?habitat
+    public function getHabitat(): ?Habitat
     {
         return $this->habitat;
     }
 
-    public function setHabitat(?habitat $habitat): static
+    public function setHabitat(?Habitat $habitat): static
     {
         $this->habitat = $habitat;
 
         return $this;
     }
 
-    public function getSpecies(): ?species
+    public function getSpecies(): ?Species
     {
         return $this->species;
     }
 
-    public function setSpecies(?species $species): static
+    public function setSpecies(?Species $species): static
     {
         $this->species = $species;
 
