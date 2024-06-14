@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Horaires | Zoo de Brocéliande{% endblock %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center">
+        <div class="hidden m-5">
+            <img src="{{asset('images/animal/toucan.jpg')}}" alt="toucan" class="medium-circle ms-5">
+        </div>
+    
+        <div class="m-5">
+            <h1 class="mt-5 text-center large-font englebert-regular yellow">Horaires du parc</h1>
+                {% for hour in hours %}
+                    <p class="text-center small-font fw-bold">{{ hour.day }} : {{ hour.open }} - {{ hour.close }}</p>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
