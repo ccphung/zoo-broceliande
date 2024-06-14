@@ -24,8 +24,10 @@
     color: #fff;
     text-align: center;
     font-size: 4rem;
-  }
+}
 
+
+/* Habitat setion */
 .habitat-img {
     margin-left: -100px;
     margin-top: -100px;
@@ -39,13 +41,74 @@
     background-position: center;
 }
 
+/* Service section */
 .service-section {
     background: #0D2831;
 }
 
+/* Review section */
+.review-shape {
+    background: #FFFF;
+}
+
+.comment-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+
+/* Side panel */
+.sidepanel {
+    height: 100%;
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    right: 0;
+    background-color: #FFFF;
+    overflow-x: hidden;
+    padding-top: 60px; 
+    transition: 0.5s; 
+}
+
+
+.sidepanel a:hover {
+    color: #297f9c8e;
+}
+  
+
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: #297F9C;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
 /* Media queries */
-@media screen and (width < 992px){
+@media (max-width : 992px) and (orientation: portrait) {
     .hero-image {
         transform: translate(-25%, 0%);
+    }
+}
+
+@media (min-width : 992px) {
+    .review-shape {
+        position:absolute;
+        height: 800px;
+        width: 500px;
+        clip-path: polygon(2% 1%, 99% 0, 96% 70%, 75% 75%, 90% 94%, 33% 75%, 3% 74%);
+    }
+
+    .margin-large {
+        margin-left:50px;
+        margin-right:50px;
+        margin-top:50px;
     }
 }
