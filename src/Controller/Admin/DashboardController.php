@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\OpeningHours;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -44,5 +45,6 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Employés/Vétérinaires', 'fa-solid fa-person-digging', User::class);
+        yield MenuItem::linkToCrud('Horaires', 'fa-regular fa-clock', OpeningHours::class);
     }
 }
