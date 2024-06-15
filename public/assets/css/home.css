@@ -97,6 +97,9 @@
 .item:hover .hover-text {
     display: block;
     position: absolute;
+    top: 20%;
+    left: 15%;
+    width: 60%;
     font-size: 1.5em;
     display: -webkit-box;
     -webkit-line-clamp: 6;
