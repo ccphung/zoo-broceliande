@@ -32,6 +32,11 @@ class Service
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTimeImmutable();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -64,7 +69,6 @@ class Service
     public function setImageFile(?File $imageFile) : void
     {
         $this->imageFile = $imageFile;
-        $this->updatedAt = new \DateTimeImmutable();
     }
 
     public function getImageFile(): ?File {
