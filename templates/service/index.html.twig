@@ -10,7 +10,7 @@
 <div class="container">
 
     {% for service in services %}
-    <div class="card-service">
+    <div class="card-service m-3">
         <div class="card-image-service">
             <img src="{{ asset(vich_uploader_asset(service)) }}" alt="{{ service.imageName }}">
         </div>
@@ -27,10 +27,7 @@
             <h2 class="card-title fst-italic">{{ service.name }}</h2>
             <p class="card-body">{{ service.description }}</p>
         </div>
-
-
     </div>
-
     {% endfor %}
 
 </div>
