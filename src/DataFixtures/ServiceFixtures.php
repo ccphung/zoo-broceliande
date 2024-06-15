@@ -54,7 +54,7 @@ class ServiceFixtures extends Fixture
         $rest2 = new Service();
         $rest2->setName('Snacks');
         $rest2->setCategory($this->getReference('Restauration'));
-        $rest2->setDescription("Montez à bord du petit train pour une visite captivante de notre zoo ! Profitez d'une vue panoramique sur nos habitats animaliers et découvrez des espèces fascinantes venues des quatre coins du monde. Une expérience unique en son genre vous attend à chaque tour de piste.");
+        $rest2->setDescription("Découvrez une sélection de snacks délicieux lors de votre visite au zoo ! Des options saines comme les fruits frais aux plaisirs gourmands comme les hot-dogs, il y en a pour tous les goûts pour agrémenter votre journée parmi les animaux.");
         $rest2->setImageName('snack.jpg');
         $rest2->setImageFile(new UploadedFile('public/images/service/snack.jpg','public/images/service/snack.jpg', 'blob', UPLOAD_ERR_OK, true));
         $manager->persist($rest2);
