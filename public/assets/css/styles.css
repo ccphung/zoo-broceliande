@@ -1,10 +1,10 @@
-@import url('nav.css');
-@import url('home.css');
-@import url('habitat.css');
-@import url('footer.css');
-@import url('location.css');
-@import url('review.css');
-@import url('service.css');
+@import url('_nav.css');
+@import url('_home.css');
+@import url('_habitat.css');
+@import url('_footer.css');
+@import url('_location.css');
+@import url('_review.css');
+@import url('_service.css');
 
 /* Body */
 body {
