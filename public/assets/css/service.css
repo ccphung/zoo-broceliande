@@ -30,12 +30,32 @@ padding:40px 20px;
   object-position:bottom;
 }
 
-.card-text {
+.card-text-darkblue {
   margin:-30px auto;
   margin-bottom:-50px;
   height:auto;
   width:300px;
   background-color:#103244;
+  color:#fff;
+  padding:20px;
+}
+
+.card-text-green {
+  margin:-30px auto;
+  margin-bottom:-50px;
+  height:auto;
+  width:300px;
+  background-color:#193f22;
+  color:#fff;
+  padding:20px;
+}
+
+.card-text-lightblue {
+  margin:-30px auto;
+  margin-bottom:-50px;
+  height:auto;
+  width:300px;
+  background-color:#297F9C;
   color:#fff;
   padding:20px;
 }

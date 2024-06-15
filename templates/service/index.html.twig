@@ -15,11 +15,20 @@
             <img src="{{ asset(vich_uploader_asset(service)) }}" alt="{{ service.imageName }}">
         </div>
         
-        <div class="card-text">
+        {% if service.category == 'Restauration' %}
+        <div class="card-text-darkblue">
+        {% elseif service.category == 'Activité' %}
+        <div class="card-text-lightblue">
+        {% elseif service.category == 'Visite' %}
+        <div class="card-text-green">
+        {% endif %}
+
         <p class="card-category fst-italic yellow">{{ service.category|upper }}</p>
             <h2 class="card-title fst-italic">{{ service.name }}</h2>
             <p class="card-body">{{ service.description }}</p>
         </div>
+
+
     </div>
 
     {% endfor %}
