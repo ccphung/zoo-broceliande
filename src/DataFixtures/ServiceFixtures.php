@@ -14,7 +14,7 @@ class ServiceFixtures extends Fixture
         $activite1 = new Service();
         $activite1->setName('Nourrir les animaux');
         $activite1->setCategory($this->getReference('Activité'));
-        $activite1->setDescription("Découvrez l'envers du décor au zoo lors du nourrissage des animaux ! Assistez à nos soigneurs experts distribuer des repas adaptés à chaque espèce, tout en apprenant sur leur alimentation et leur conservation. Une expérience captivante qui vous rapproche de la nature et de la mission de préservation du zoo.");
+        $activite1->setDescription("Découvrez l'envers du décor au zoo lors du nourrissage des animaux ! Assistez à nos soigneurs experts distribuer des repas adaptés à chaque espèce, tout en apprenant sur leur alimentation et leur conservation.");
         $activite1->setImageName('feeding.jpg');
         $activite1->setImageFile(new UploadedFile('public/images/service/feed.jpg','public/images/service/feed.jpg', 'blob', UPLOAD_ERR_OK, true));
         $manager->persist($activite1);
@@ -22,7 +22,7 @@ class ServiceFixtures extends Fixture
         $activite2 = new Service();
         $activite2->setName('Interaction avec les animaux');
         $activite2->setCategory($this->getReference('Activité'));
-        $activite2->setDescription("Au cœur de notre zoo, nous offrons une expérience unique d'interaction douce avec nos résidents animaux. Venez découvrir le plaisir de caresser nos adorables pensionnaires dans un cadre sécurisé et éducatif. Joignez-vous à nous pour une séance de câlins zoo où le respect de l'animal et le plaisir de l'échange sont au premier plan.");
+        $activite2->setDescription("Au cœur de notre zoo, nous offrons une expérience unique d'interaction douce avec nos résidents animaux. Venez découvrir le plaisir de caresser nos adorables pensionnaires dans un cadre sécurisé et éducatif.");
         $activite2->setImageName('petting.jpg');
         $activite2->setImageFile(new UploadedFile('public/images/service/petting.jpg','public/images/service/petting.jpg', 'blob', UPLOAD_ERR_OK, true));
         $manager->persist($activite2);
@@ -46,7 +46,7 @@ class ServiceFixtures extends Fixture
         $rest1 = new Service();
         $rest1->setName('Restaurants');
         $rest1->setCategory($this->getReference('Restauration'));
-        $rest1->setDescription("Détendez-vous et savourez un moment délicieux au restaurant du zoo, offrant une vue imprenable sur nos habitats animaliers. Explorez une sélection de plats savoureux inspirés par la diversité de la faune mondiale, parfaits pour combler vos papilles après une journée d'exploration. Que vous soyez en famille ou entre amis, notre restaurant vous promet une expérience culinaire inoubliable au cœur de l'aventure zooologique.");
+        $rest1->setDescription("Détendez-vous et savourez un moment délicieux au restaurant du zoo, offrant une vue imprenable sur nos habitats animaliers. Explorez une sélection de plats savoureux inspirés par la diversité de la faune mondiale, parfaits pour combler vos papilles après une journée d'exploration.");
         $rest1->setImageName('restaurant.jpg');
         $rest1->setImageFile(new UploadedFile('public/images/service/restaurant.jpg','public/images/service/restaurant.jpg', 'blob', UPLOAD_ERR_OK, true));
         $manager->persist($rest1);
