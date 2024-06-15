@@ -44,7 +44,7 @@ class ServiceFixtures extends Fixture
         $manager->persist($visite2);
 
         $rest1 = new Service();
-        $rest1->setName('Brocélian Express');
+        $rest1->setName('Restaurants');
         $rest1->setCategory($this->getReference('Restauration'));
         $rest1->setDescription("Détendez-vous et savourez un moment délicieux au restaurant du zoo, offrant une vue imprenable sur nos habitats animaliers. Explorez une sélection de plats savoureux inspirés par la diversité de la faune mondiale, parfaits pour combler vos papilles après une journée d'exploration. Que vous soyez en famille ou entre amis, notre restaurant vous promet une expérience culinaire inoubliable au cœur de l'aventure zooologique.");
         $rest1->setImageName('restaurant.jpg');
@@ -52,7 +52,7 @@ class ServiceFixtures extends Fixture
         $manager->persist($rest1);
 
         $rest2 = new Service();
-        $rest2->setName('Brocélian Express');
+        $rest2->setName('Snacks');
         $rest2->setCategory($this->getReference('Restauration'));
         $rest2->setDescription("Montez à bord du petit train pour une visite captivante de notre zoo ! Profitez d'une vue panoramique sur nos habitats animaliers et découvrez des espèces fascinantes venues des quatre coins du monde. Une expérience unique en son genre vous attend à chaque tour de piste.");
         $rest2->setImageName('snack.jpg');
