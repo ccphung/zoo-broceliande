@@ -3,6 +3,6 @@ vich_uploader:
 
     mappings:
        service:
-           uri_prefix: /images/upload/service
+           uri_prefix: /images/service
            upload_destination: '%kernel.project_dir%/public/images/service'
            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
