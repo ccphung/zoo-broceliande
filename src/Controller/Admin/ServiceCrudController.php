@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Service;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -31,6 +32,7 @@ class ServiceCrudController extends AbstractCrudController
         return [
             TextField::new('name')
                 ->setLabel('Nom'),
+            AssociationField::new('category'),
             TextareaField::new('description')
                 ->setLabel('Description'),
             TextField::new('imageName')
