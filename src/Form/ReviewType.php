@@ -23,7 +23,7 @@ class ReviewType extends AbstractType
             ],
             'label' => 'Pseudonyme',
             'label_attr' => [
-                'class' => 'form-label mt-2'
+                'class' => 'form-label mt-2 fw-bold small-font'
             ],
             'constraints' => [
                 new NotBlank(['message' => 'Veuillez indiquer un pseudo.']),
@@ -39,7 +39,7 @@ class ReviewType extends AbstractType
                 ],
                 'label' => 'Commentaire',
                 'label_attr' => [
-                    'class' => 'form-label mt-2'
+                    'class' => 'form-label mt-2 fw-bold small-font'
                 ],
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez ajouter un commentaire']),
