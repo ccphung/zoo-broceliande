@@ -36,7 +36,7 @@ class ServiceFixtures extends Fixture
         $manager->persist($visite1);
 
         $visite2 = new Service();
-        $visite2->setName('Brocélian Express');
+        $visite2->setName('Brocéliande Express');
         $visite2->setCategory($this->getReference('Visite'));
         $visite2->setDescription("Montez à bord du petit train pour une visite captivante de notre zoo ! Profitez d'une vue panoramique sur nos habitats animaliers et découvrez des espèces fascinantes venues des quatre coins du monde. Une expérience unique en son genre vous attend à chaque tour de piste.");
         $visite2->setImageName('feeding.jpg');
