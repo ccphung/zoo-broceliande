@@ -30,31 +30,20 @@
     <h2 class="large-font englebert-regular text-center text-white">Services & Activités</h2>
     <p class="text-white text-center small-font my-5">Laissez-vous guider à travers nos diverses <span class="fw-bold">activités</span> et découvrez nos nombreux <span class="fw-bold">services de restauration</span>.</p>
     <div class="owl-carousel owl-theme d-flex">
-        <div class="item hover-translate">
+        {% for service in services %}
+        <div class="item hover-darken">
             <div class="polygon m-2">
-                <a href=""><img class="large-img habitat-img" src="{{ asset('images/service/guide.jpg') }}" alt=""></a>
+                <img src="{{ asset(vich_uploader_asset(service)) }}" alt="{{ service.imageName }}">
             </div>
-            <p class="text-white text-center small-font">RESTAURATION</p>
-            <p class="text-white text-center medium-font raleway fw-bold">Nos différents restaurants</p>
+            <p class="text-white hover-text">{{ service.description }}</p>
+            <p class="yellow text-center small-font fst-italic">{{ service.category|upper}}</p>
+            <p class="text-white text-center medium-font raleway fw-bold">{{ service.name }}</p>
         </div>
-        <div class="item hover-translate">
-            <div class="polygon m-2">
-                <img class="large-img habitat-img" src="{{ asset('images/service/restaurant.jpg') }}" alt="">
-            </div>
-            <p class="text-white text-center small-font">RESTAURATION</p>
-            <p class="text-white text-center medium-font raleway fw-bold">Nos différents restaurants</p>
-        </div>
-        <div class="item hover-translate">
-            <div class="polygon m-2">
-                <img class="large-img habitat-img" src="{{ asset('images/service/train.jpg') }}" alt="">
-            </div>
-            <p class="text-white text-center small-font">RESTAURATION</p>
-            <p class="text-white text-center medium-font raleway fw-bold">Nos différents restaurants</p>
-        </div>
+        {% endfor %}
     </div>
     <div class="d-flex flex-column align-items-center justify-content-center mt-3">
         <p class="medium-font yellow raleway text-center">Explorez tous nos fabuleux services ici!</p>
-        <a href="#" class="btn btn-yellow">Je découvre les services ></a>
+        <a href="{{ path('app_service') }}" class="btn btn-yellow">Je découvre les services ></a>
     </div>
 </section>
 
