@@ -8,16 +8,22 @@
 <div class="yellow-separator mb-5"></div>
 
 <div class="container">
+
+    {% for service in services %}
     <div class="card-service">
         <div class="card-image-service">
-            <img src="{{ asset('images/service/guide.jpg') }}" alt"guide">
+            <img src="{{ asset(vich_uploader_asset(service)) }}" alt="{{ service.imageName }}">
         </div>
-    
+        
         <div class="card-text">
-            <h2 class="card-title fst-italic">Visite gratuite du parc</h2>
-            <p class="card-body">Nos guides experts au Zoo de Brocéliande vous offrent des visites éducatives et captivantes, partageant des anecdotes fascinantes sur les animaux. Ils vous informent sur les comportements et habitats des espèces et répondent à vos questions, tout en sensibilisant à la conservation de la faune. Une expérience enrichissante pour tous les âges !</p>
+        <p class="card-category fst-italic yellow">Activité</p>
+            <h2 class="card-title fst-italic">{{ service.name }}</h2>
+            <p class="card-body">{{ service.description }}</p>
         </div>
     </div>
+
+    {% endfor %}
+
 </div>
 
 {% endblock %}
