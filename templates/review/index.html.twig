@@ -3,7 +3,7 @@
 {% block title %}Je donne mon avis | Zoo de Brocéliande{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container-fluid">
     {% for message in app.flashes('success') %}
         <div class="alert alert-success mt-4">
             {{ message }}
@@ -11,13 +11,13 @@
     {% endfor %}
 </div>
 
-<div class="container m-5 blur">
+<div class="container blur">
     <div class="row">
         <div class="col-lg-6 hidden">
             <img src="{{ asset('images/animal/cameleon.jpg') }}" alt="Caméléon" class="medium-circle">
         </div>
-        <div class="col-lg-6 col-md-12">
-            <h2 class='mt-5 text-center large-font englebert-regular'>Je donne mon avis</h2>
+        <div class="col-lg-6 col-md-12 review-container">
+            <h2 class='mt-5 text-center large-font englebert-regular darkblue'>Je donne mon avis</h2>
                     {{ form_start(form) }}
                         {{ form_label(form.pseudo) }}
                         {{ form_widget(form.pseudo) }}

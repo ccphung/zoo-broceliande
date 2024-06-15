@@ -3,6 +3,10 @@
     position: fixed;
     bottom: 50px;
     right:0;
-    filter: blur(3px) brightness(90%);
+    filter: blur(3px) brightness(40%);
     z-index: -2;
+}
+
+.review-container {
+    background: #ffffff91;
 }
