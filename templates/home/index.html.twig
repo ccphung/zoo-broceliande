@@ -35,7 +35,10 @@
             <div class="polygon m-2">
                 <img src="{{ asset(vich_uploader_asset(service)) }}" alt="{{ service.imageName }}">
             </div>
-            <p class="text-white hover-text">{{ service.description }}</p>
+            <div class="d-flex justify-content-center align-items-center">
+                <p class="text-white hover-text">{{ service.description }}</p>
+            </div>
+
             <p class="yellow text-center small-font fst-italic">{{ service.category|upper}}</p>
             <p class="text-white text-center medium-font raleway fw-bold">{{ service.name }}</p>
         </div>
