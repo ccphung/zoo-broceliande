@@ -7,8 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: HabitatRepository::class)]
+#[Vich\Uploadable]
 class Habitat
 {
     #[ORM\Id]
@@ -31,9 +33,16 @@ class Habitat
     #[ORM\OneToMany(targetEntity: Animal::class, mappedBy: 'habitat')]
     private Collection $animals;
 
+    #[ORM\Column(length: 255)]
+    private ?string $imageName = null;
+
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
     public function __construct()
     {
         $this->animals = new ArrayCollection();
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -103,6 +112,30 @@ class Habitat
                 $animal->setHabitat(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(string $imageName): static
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    public function getupdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setupdatedAt(\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
