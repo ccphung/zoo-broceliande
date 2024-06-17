@@ -40,13 +40,13 @@
 
 .rectangle-container img {
     height: 100%;
-    width: 50%;
+    width: 80vw;
     object-fit: cover;
     border: 8px solid #1D5D5A;
 }
 
 .large-rectangle-container {
-    height: 50vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     overflow: hidden;
@@ -145,5 +145,9 @@
         margin-left:50px;
         margin-right:50px;
         margin-top:50px;
+    }
+
+    .rectangle-container img {
+        width: 25vw;
     }
 }
