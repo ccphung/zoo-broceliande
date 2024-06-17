@@ -7,8 +7,8 @@
         <div class="yellow-separator"></div>
         {% for review in reviews|reverse %}
             <div class="m-3">
-                <p class="medium-font text-center">"{{review.comment}}"</p>
-                <p class="small-font fst-italic text-center">~ {{review.pseudo}} le {{review.date|date("d/m/Y", "Europe/Paris")}} ~</p>
+                <p class="small-font text-center">"{{review.comment}}"</p>
+                <p class="smaller-font fst-italic text-center">~ {{review.pseudo}} le {{review.date|date("d/m/Y", "Europe/Paris")}} ~</p>
                 <div class="blue-separator"></div>
             </div>
         {% endfor %}
