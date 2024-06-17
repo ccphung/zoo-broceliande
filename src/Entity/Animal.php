@@ -32,7 +32,7 @@ class Animal
     /**
      * @var Collection<int, vetreport>
      */
-    #[ORM\OneToMany(targetEntity: vetReport::class, mappedBy: 'animal')]
+    #[ORM\OneToMany(targetEntity: VetReport::class, mappedBy: 'animal')]
     private Collection $vetReport;
 
     public function __construct()
@@ -101,7 +101,7 @@ class Animal
         return $this->vetReport;
     }
 
-    public function addVetReport(vetreport $vetReport): static
+    public function addVetReport(Vetreport $vetReport): static
     {
         if (!$this->vetReport->contains($vetReport)) {
             $this->vetReport->add($vetReport);
@@ -111,7 +111,7 @@ class Animal
         return $this;
     }
 
-    public function removeVetReport(vetreport $vetReport): static
+    public function removeVetReport(Vetreport $vetReport): static
     {
         if ($this->vetReport->removeElement($vetReport)) {
             // set the owning side to null (unless already changed)
