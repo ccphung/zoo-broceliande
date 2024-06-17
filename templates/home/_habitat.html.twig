@@ -1,13 +1,25 @@
 {# Habitat #}
-<section class="habitat-section m-5">
-    <div class="large-circle hidden m-5">
-        <a href="#">
-            <img class="large-img habitat-img" src="{{ asset('images/animal/lion.jpg') }}" alt="">
-        </a>
+<section class="habitat-section">
+       
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <h2 class="large-font englebert-regular text-white text-center">Les merveilleux habitats</h2>
+            <p class="small-font text-white">Découvrez les divers habitats et les animaux qui y vivent</p>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-8 rectangle-container">
+                <img src="{{ asset('images/habitat/bear.jpg') }}" alt="ours">
+                <img src="{{ asset('images/habitat/girafe.jpg') }}" alt="girafe">
+            </div>
+            <div class="col-8 rectangle-container">
+                <img src="{{ asset('images/habitat/monkey.jpg') }}" alt="singe">
+                <img src="{{ asset('images/habitat/aquarium.jpg') }}" alt="aquarium">
+            </div>
+        </div>
+    </div>
+
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <h2 class="large-font englebert-regular">Les merveilleux habitats</h2>
-        <p class="small-font">Découvrez les divers habitats et les animaux qui y vivent</p>
-        <a href="{{ path('app_habitat')}}" class="btn btn-green">Je découvre les habitats ></a>
+        <a href="{{ path('app_habitat')}}" class="btn btn-yellow mb-5">Je découvre les habitats ></a>
     </div>
 </section>
