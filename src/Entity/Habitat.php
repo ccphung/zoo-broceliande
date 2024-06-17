@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: HabitatRepository::class)]
@@ -17,6 +18,9 @@ class Habitat
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+    
+    #[Vich\UploadableField (mapping: 'service', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
 
     #[ORM\Column(length: 50)]
     private ?string $name = null;
@@ -138,5 +142,14 @@ class Habitat
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    public function setImageFile(?File $imageFile) : void
+    {
+        $this->imageFile = $imageFile;
+    }
+
+    public function getImageFile(): ?File {
+        return $this->imageFile;
     }
 }
