@@ -28,17 +28,28 @@
 
 
 /* Habitat setion */
-.habitat-img {
-    margin-left: -100px;
-    margin-top: -100px;
+.habitat-section {
+    background:#112E31;
 }
 
-.habitat-section {
-    display:flex;
-    justify-content: center;
-    background-image: url('../../images/bg/yellow-painting.jpg');
-    background-size: cover;
-    background-position: center;
+.rectangle-container {
+    height: 300px;
+    display: flex;
+    overflow: hidden;
+}
+
+.rectangle-container img {
+    height: 100%;
+    width: 50%;
+    object-fit: cover;
+    border: 8px solid #1D5D5A;
+}
+
+.large-rectangle-container {
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
 }
 
 /* Service section */
