@@ -11,6 +11,11 @@
 
 .nav-link {
     font-size: 1.5em;
+    color:#8E9F88;
+}
+
+.nav-link:hover {
+    color:#B5C9B0;
 }
 
 .dropdown-menu {
