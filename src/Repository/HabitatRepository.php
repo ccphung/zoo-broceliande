@@ -16,20 +16,17 @@ class HabitatRepository extends ServiceEntityRepository
         parent::__construct($registry, Habitat::class);
     }
 
-//    /**
-//     * @return Habitat[] Returns an array of Habitat objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('h')
-//            ->andWhere('h.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('h.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+    * @return Habitat[] Returns an array of Habitat objects
+    */
+   public function findLastFour(): array
+   {
+        return $this->createQueryBuilder('h')
+        ->orderBy('h.id', 'DESC')
+        ->setMaxResults(4)
+        ->getQuery()
+        ->getResult();
+    }
 
 //    public function findOneBySomeField($value): ?Habitat
 //    {
