@@ -33,24 +33,18 @@
 }
 
 .rectangle-container {
-    height: 300px;
+    height: 250px;
     display: flex;
     overflow: hidden;
 }
 
 .rectangle-container img {
     height: 100%;
-    width: 80vw;
+    width: auto;
     object-fit: cover;
     border: 8px solid #1D5D5A;
 }
 
-.large-rectangle-container {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    overflow: hidden;
-}
 
 /* Service section */
 .service-section {
@@ -148,6 +142,6 @@
     }
 
     .rectangle-container img {
-        width: 25vw;
+        width: 80vw;
     }
 }
