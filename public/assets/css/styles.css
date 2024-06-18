@@ -98,13 +98,6 @@ body {
     transform: translateY(-2px);   
     border: 3px solid #DEAF00;
     color: #297F9C;
-    font-weight: bold;
-}
-
-.btn-blue:hover {
-    transform: translateY(-2px);   
-    background: #DEAF00;
-    color: #297F9C;
 }
 
 .btn-blue {
@@ -116,6 +109,7 @@ body {
     padding-right: 20px;
     transition: transform 0.3s ease;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .btn-blue:hover {
@@ -133,6 +127,7 @@ body {
     padding-right: 20px;
     transition: transform 0.3s ease;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .btn-darkblue:hover {
@@ -140,16 +135,6 @@ body {
     background: #103244;
     color:#DEAF00;
 }
-
-.hover-translate {
-    display: inline-block;
-    transition: transform 0.2s ease;
-}
-
-.hover-translate:hover {
-    transform: translateY(-4px);  
-}
-
 
 .btn-yellow {
     font-size: 1.2em;
@@ -160,13 +145,26 @@ body {
     padding-right: 20px;
     transition: transform 0.3s ease;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .btn-yellow:hover {
-    transform: translateY(-2px);   
-    background: #DEAF00;
-    color:#0D2831;
+    transform: translateY(-2px);
+    background: #DEAF00; 
+    color:#0D2831;  
 }
+
+
+/* Hover */
+.hover-translate {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.hover-translate:hover {
+    transform: translateY(-4px);  
+}
+
 
 /* Geometric shape */
 .large-circle {
@@ -206,6 +204,12 @@ body {
 
 .blue-separator {
     background: #0D2831;
+    height: 10px;
+    clip-path: polygon(35% 60%, 77% 55%, 98% 66%, 0 68%);
+}
+
+.lightblue-separator {
+    background: #297F9C;
     height: 10px;
     clip-path: polygon(35% 60%, 77% 55%, 98% 66%, 0 68%);
 }
