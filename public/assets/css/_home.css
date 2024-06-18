@@ -29,7 +29,8 @@
 
 /* Habitat setion */
 .habitat-section {
-    background:#112E31;
+    background: #112E31;
+    background: linear-gradient(#112E31, #0D2831);
 }
 
 .rectangle-container {
@@ -42,7 +43,6 @@
     height: 100%;
     width: auto;
     object-fit: cover;
-    border: 8px solid #1D5D5A;
 }
 
 
