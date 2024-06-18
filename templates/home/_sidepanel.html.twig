@@ -3,8 +3,8 @@
 <section>
     <div id="mySidepanel" class="sidepanel">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <h3 class="medium-font yellow text-center englebert-regular m-3">Tous les avis</h3>
-        <div class="yellow-separator"></div>
+        <h3 class="medium-font light-blue text-center englebert-regular m-3">Tous les avis</h3>
+        <div class="lightblue-separator"></div>
         {% for review in reviews|reverse %}
             <div class="m-3">
                 <p class="small-font text-center">"{{review.comment}}"</p>
