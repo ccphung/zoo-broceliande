@@ -28,9 +28,6 @@ class Habitat
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $habitatRemark = null;
-
     /**
      * @var Collection<int, Animal>
      */
@@ -42,6 +39,9 @@ class Habitat
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $updatedAt = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $habitatRemark = null;
 
     public function __construct()
     {
@@ -74,18 +74,6 @@ class Habitat
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getHabitatRemark(): ?string
-    {
-        return $this->habitatRemark;
-    }
-
-    public function setHabitatRemark(string $habitatRemark): static
-    {
-        $this->habitatRemark = $habitatRemark;
 
         return $this;
     }
@@ -151,5 +139,17 @@ class Habitat
 
     public function getImageFile(): ?File {
         return $this->imageFile;
+    }
+
+    public function getHabitatRemark(): ?string
+    {
+        return $this->habitatRemark;
+    }
+
+    public function setHabitatRemark(?string $habitatRemark): static
+    {
+        $this->habitatRemark = $habitatRemark;
+
+        return $this;
     }
 }
