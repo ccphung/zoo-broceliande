@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{habitat.name}} | Zoo de Brocéliande{% endblock %}
+
+{% block body %}    
+    <div class="habitat-container p-5">
+        <h2 class="large-font fw-bold yellow text-center mt-5 englebert-regular">{{habitat.name}}</h2>
+        <div class="green-separator"></div>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center">     
+                    <div class="card">
+                        <div class="card bg-dark text-white">
+                            <img src="{{ asset(vich_uploader_asset(habitat)) }}" alt="{{ habitat.imageName }}" class="card-img">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 d-flex">
+                    <p class="medium-font ms-5 me-5 text-white">{{habitat.description}}</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="green text-center englebert-regular medium-large-font mt-5">Découvez les stars de l'habitat</h3>
+        <div class="d-flex">
+            <div>
+                <div class="circle-img-container">
+                    <img src="{{ asset('images/animal/lion.jpg') }}" alt="" class="circle-img">
+                </div>
+                <a href="" class="btn btn-yellow">Je découvre</a>
+            </div>
+
+            
+            <div class="circle-img-container">
+                <img src="{{ asset('images/animal/tiger.jpg') }}" alt="" class="circle-img">
+            </div>
+        </div>
+        </div>
+
+    {% endblock %}
