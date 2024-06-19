@@ -7,41 +7,26 @@
 <div class="habitat-container p-5">
     <h1 class="large-font englebert-regular blue text-center green">Exploration des Écosystèmes</h1>
 
-    {% for habitat in habitats %}
-        <h2 class="medium-large-font fw-bold yellow text-center mt-5">{{habitat.name}}</h2>
-        <div class="yellow-separator"></div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center">     
-                    <div class="card">
-                        <div class="card bg-dark text-white">
-                            <img src="{{ asset(vich_uploader_asset(habitat)) }}" alt="{{ habitat.imageName }}" class="card-img">
-                        </div>
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center ">
+        {% for habitat in habitats %}
+            <div class="col-5 m-5">
+                <h2 class="medium-large-font text-white text-center mt-5">{{habitat.name}}</h2>
+                <div class="card">
+                    <div class="card bg-dark text-white">
+                        <img src="{{ asset(vich_uploader_asset(habitat)) }}" alt="{{ habitat.imageName }}" class="card-img">
                     </div>
+                    
                 </div>
-                <div class="col-lg-6 col-md-12 d-flex">
-                    <p class="medium-font ms-5 me-5 text-white">{{habitat.description}}</p>
+                <div class="d-flex justify-content-center mt-3">
+                    <a href="{{ path('habitat_details', {"slug": habitat.name}) }}" class="btn btn-yellow">Je visite l'habitat ></a>
                 </div>
             </div>
-        </div>
+        {% endfor %}
 
-        <h3 class="text-center green englebert-regular medium-large-font">Découvez les stars de l'habitat</h3>
-        <div class="d-flex">
-            <div>
-                <div class="circle-img-container">
-                    <img src="{{ asset('images/animal/lion.jpg') }}" alt="" class="circle-img">
-                </div>
-                <a href="" class="btn btn-yellow">Je découvre</a>
-            </div>
+    </div>
+</div>
 
-            
-            <div class="circle-img-container">
-                <img src="{{ asset('images/animal/tiger.jpg') }}" alt="" class="circle-img">
-            </div>
-        </div>
-        
-    {% endfor %}
 
 </div>
 

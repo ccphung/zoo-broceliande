@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Repository\HabitatRepository;
+use App\Entity\Habitat;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 
 class HabitatController extends AbstractController
 {
@@ -15,6 +17,16 @@ class HabitatController extends AbstractController
         return $this->render('habitat/index.html.twig', [
             'controller_name' => 'HabitatController',
             'habitats' => $habitats->findAll()
+        ]);
+    }
+
+    #[Route('/habitat/{slug}', name: 'habitat_details')]
+    public function details(
+        #[MapEntity(mapping: ['slug' => 'name'])] Habitat $habitat, HabitatRepository $habitats
+    ): Response
+    {
+        return $this->render('habitat/details.html.twig', [
+            'habitat' => $habitat
         ]);
     }
 }
