@@ -239,6 +239,12 @@ body {
     clip-path: polygon(35% 60%, 77% 55%, 98% 66%, 0 68%);
 }
 
+.green-separator {
+    background:#B5C9B0;
+    height: 10px;
+    clip-path: polygon(35% 60%, 77% 55%, 98% 66%, 0 68%);
+}
+
 /* Media queries */
 @media screen and (min-width : 992px){
     .hidden {
