@@ -40,6 +40,10 @@ body {
     font-size: 2em;
 }
 
+.sm-font {
+    font-size: 1.7em;
+}
+
 .small-font {
     font-size: 1.2em;
 }
