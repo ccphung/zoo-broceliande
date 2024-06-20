@@ -22,20 +22,25 @@
             </div>
         </div>
 
-        <h3 class="green text-center englebert-regular medium-large-font mt-5">Découvez les stars de l'habitat</h3>
-        <div class="d-flex">
-            <div>
-                <div class="circle-img-container">
-                    <img src="{{ asset('images/animal/lion.jpg') }}" alt="" class="circle-img">
-                </div>
-                <a href="" class="btn btn-yellow">Je découvre</a>
+        <h3 class="green text-center englebert-regular medium-large-font m-5">Découvez les stars de l'habitat</h3>
+        <div class="container">
+            <div class="row">
+                {% for animal in habitat.animals %}
+                    <div class="col-lg-4 col-md-6">
+                        <p class="text-white medium-font text-center">{{ animal.name }}</p>
+                        <div class="circle-img-container">
+                            <img src="{{ asset(vich_uploader_asset(animal)) }}" alt="{{ animal.imageName }}" class="circle-img">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a href="" class="btn btn-yellow">Je découvre</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="text-white">Aucun animal dans cet habitat.</div>
+                {% endfor %}
             </div>
 
-            
-            <div class="circle-img-container">
-                <img src="{{ asset('images/animal/tiger.jpg') }}" alt="" class="circle-img">
-            </div>
         </div>
-        </div>
+    </div>
 
     {% endblock %}
