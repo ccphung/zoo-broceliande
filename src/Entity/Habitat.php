@@ -19,7 +19,7 @@ class Habitat
     #[ORM\Column]
     private ?int $id = null;
     
-    #[Vich\UploadableField (mapping: 'service', fileNameProperty: 'imageName')]
+    #[Vich\UploadableField (mapping: 'habitat', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 50)]

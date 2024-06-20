@@ -18,7 +18,7 @@ class Animal
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Vich\UploadableField (mapping: 'service', fileNameProperty: 'imageName')]
+    #[Vich\UploadableField (mapping: 'animal', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 50)]
