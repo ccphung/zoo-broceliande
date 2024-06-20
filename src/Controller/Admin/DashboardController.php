@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Animal;
 use App\Entity\Habitat;
 use App\Entity\OpeningHours;
 use App\Entity\Service;
@@ -47,6 +48,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Employés/Vétérinaires', 'fa-solid fa-person-digging', User::class);
+        yield MenuItem::linkToCrud('Animal', 'fa-solid fa-otter', Animal::class);
         yield MenuItem::linkToCrud('Services', 'fa-solid fa-train', Service::class);
         yield MenuItem::linkToCrud('Habitat', 'fa-solid fa-solid fa-house', Habitat::class);
         yield MenuItem::linkToCrud('Horaires', 'fa-regular fa-clock', OpeningHours::class);
