@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Animal;
 use App\Entity\Habitat;
 use App\Entity\OpeningHours;
+use App\Entity\Review;
 use App\Entity\Service;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -41,5 +42,7 @@ class DashboardController extends AbstractDashboardController
         ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Horaires', 'fa-regular fa-clock', OpeningHours::class)
         ->setPermission('ROLE_ADMIN');
+        yield MenuItem::linkToCrud('Avis', 'fa-regular fa-comment', Review::class)
+        ->setPermission('ROLE_EMPLOYE');
     }
 }
