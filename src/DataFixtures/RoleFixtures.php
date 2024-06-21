@@ -12,18 +12,18 @@ class RoleFixtures extends Fixture
     {
         
         $admin = new Role();
-        $this->addReference('Admin', $admin);
-        $admin->setLabel('[ROLE_ADMIN]');
+        $this->addReference('ROLE_ADMIN', $admin);
+        $admin->setLabel('ROLE_ADMIN');
         $manager->persist($admin);
 
         $worker = new Role();
-        $this->addReference('Employé', $worker);
-        $worker->setLabel('[ROLE_EMPLOYE]');
+        $this->addReference('ROLE_EMPLOYE', $worker);
+        $worker->setLabel('ROLE_EMPLOYE');
         $manager->persist($worker);
 
         $vet = new Role();
-        $this->addReference('Vétérinaire', $vet);
-        $vet->setLabel('[ROLE_VET]');
+        $this->addReference('ROLE_VET', $vet);
+        $vet->setLabel('ROLE_VET');
         $manager->persist($vet);
 
         $manager->flush();
