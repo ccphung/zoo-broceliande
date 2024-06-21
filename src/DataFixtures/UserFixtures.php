@@ -13,9 +13,7 @@ class UserFixtures extends Fixture
         private UserPasswordHasherInterface $passwordHasher){}
     
     public function load(ObjectManager $manager): void
-    {
-        $adminRole = $this->getReference('ROLE_ADMIN');
-        
+    {   
         $admin = new User();
         $admin->setFirstName('José');
         $admin->setLastName('Garcia');
