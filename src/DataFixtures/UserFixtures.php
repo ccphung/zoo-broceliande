@@ -14,6 +14,7 @@ class UserFixtures extends Fixture
     
     public function load(ObjectManager $manager): void
     {
+        $adminRole = $this->getReference('ROLE_ADMIN');
         
         $admin = new User();
         $admin->setFirstName('José');
@@ -21,7 +22,8 @@ class UserFixtures extends Fixture
         $admin->setUsername('jose@arcadia.fr');
         $admin->setPassword(
             $this->passwordHasher->hashPassword($admin, 'test'));
-        $admin->setRole($this->getReference('Admin'));
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setRole($adminRole);
         $manager->persist($admin);
 
         $manager->flush();
