@@ -22,7 +22,7 @@ class HabitatController extends AbstractController
 
     #[Route('/habitat/{slug}', name: 'habitat_details')]
     public function details(
-        #[MapEntity(mapping: ['slug' => 'name'])] Habitat $habitat, HabitatRepository $habitats
+        #[MapEntity(mapping: ['slug' => 'name'])] Habitat $habitat
     ): Response
     {
         return $this->render('habitat/details.html.twig', [
