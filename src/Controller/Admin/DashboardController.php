@@ -12,6 +12,7 @@ use App\Repository\ReviewRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -45,7 +46,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Animal', 'fa-solid fa-otter', Animal::class)
         ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Services', 'fa-solid fa-train', Service::class)
-        ->setPermission('ROLE_ADMIN');
+        ->setPermission(new Expression('"ROLE_ADMIN" or "ROLE_EMPLOYE"'));
         yield MenuItem::linkToCrud('Habitat', 'fa-solid fa-solid fa-house', Habitat::class)
         ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Horaires', 'fa-regular fa-clock', OpeningHours::class)

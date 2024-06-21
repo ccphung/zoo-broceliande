@@ -9,9 +9,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[IsGranted('ROLE_ADMIN')]
+#[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_EMPLOYE")'))]
 
 class ServiceCrudController extends AbstractCrudController
 {
