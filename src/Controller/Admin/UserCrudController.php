@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\{Crud, KeyValueStore};
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvents;
@@ -13,7 +12,9 @@ use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
-use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -43,11 +44,20 @@ class UserCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        $roles = [
+            'Employé' => 'ROLE_EMPLOYE',
+            'Vétérinaire' => 'ROLE_VET',
+        ];
+
         $fields = [
             TextField::new('username')->setLabel('Pseudonyme'),
             TextField::new('firstName')->setLabel('Prénom'),
             TextField::new('lastname')->setLabel('Nom de famille'),
-            AssociationField::new('role'),
+            ChoiceField::new('roles', 'Rôles')
+                ->setChoices($roles)
+                ->allowMultipleChoices(true)
+                ->renderExpanded(true) 
+                ->onlyOnForms()
         ];
 
         if ($pageName === Crud::PAGE_NEW || $pageName === Crud::PAGE_EDIT) {
