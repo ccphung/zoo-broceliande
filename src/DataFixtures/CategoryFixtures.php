@@ -10,26 +10,22 @@ class CategoryFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $activite = new Category();
-        $this->addReference('Activité', $activite );
-        $activite->setLabel('Activité');
-        $manager->persist($activite);
+        $categories = [
+            'Activité',
+            'Visite',
+            'Restauration',
+            'Evenement'
+        ];
 
-        $visite = new Category();
-        $this->addReference('Visite', $visite );
-        $visite->setLabel('Visite');
-        $manager->persist($visite);
+        foreach ($categories as $categoryLabel) {
+            $category = new Category();
+            $category->setLabel($categoryLabel);
+            $manager->persist($category);
 
-        $restauration = new Category();
-        $this->addReference('Restauration', $restauration );
-        $restauration->setLabel('Restauration');
-        $manager->persist($restauration);
-
-        $evenement = new Category();
-        $this->addReference('Evenement', $evenement );
-        $evenement->setLabel('Evenement');
-        $manager->persist($evenement);
+            $this->addReference($categoryLabel, $category);
+        }
 
         $manager->flush();
     }
 }
+

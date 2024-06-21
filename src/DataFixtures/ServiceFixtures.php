@@ -11,53 +11,60 @@ class ServiceFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $activite1 = new Service();
-        $activite1->setName('Nourrir les animaux');
-        $activite1->setCategory($this->getReference('Activité'));
-        $activite1->setDescription("Découvrez l'envers du décor au zoo lors du nourrissage des animaux ! Assistez à nos soigneurs experts distribuer des repas adaptés à chaque espèce, tout en apprenant sur leur alimentation et leur conservation.");
-        $activite1->setImageName('feeding.jpg');
-        $activite1->setImageFile(new UploadedFile('public/images/service/feed.jpg','public/images/service/feed.jpg', 'blob', UPLOAD_ERR_OK, true));
-        $manager->persist($activite1);
+        $services = [
+            [
+                'name' => 'Nourrir les animaux',
+                'category' => 'Activité',
+                'description' => "Découvrez l'envers du décor au zoo lors du nourrissage des animaux ! Assistez à nos soigneurs experts distribuer des repas adaptés à chaque espèce, tout en apprenant sur leur alimentation et leur conservation.",
+                'image_name' => 'feeding.jpg',
+                'image_file' => new UploadedFile('public/images/service/feed.jpg', 'feed.jpg', 'image/jpeg', UPLOAD_ERR_OK, true)
+            ],
+            [
+                'name' => 'Interaction avec les animaux',
+                'category' => 'Activité',
+                'description' => "Au cœur de notre zoo, nous offrons une expérience unique d'interaction douce avec nos résidents animaux. Venez découvrir le plaisir de caresser nos adorables pensionnaires dans un cadre sécurisé et éducatif.",
+                'image_name' => 'petting.jpg',
+                'image_file' => new UploadedFile('public/images/service/petting.jpg', 'petting.jpg', 'image/jpeg', UPLOAD_ERR_OK, true)
+            ],
+            [
+                'name' => 'Visite gratuite',
+                'category' => 'Visite',
+                'description' => "Découvrez la diversité étonnante de la faune mondiale avec des experts passionnés. Apprenez des faits intéressants sur nos résidents à plumes, à poils et à écailles tout en explorant leurs habitats naturels recréés. Une expérience éducative et immersive vous attend à chaque pas.",
+                'image_name' => 'guide.jpg',
+                'image_file' => new UploadedFile('public/images/service/guide.jpg', 'guide.jpg', 'image/jpeg', UPLOAD_ERR_OK, true)
+            ],
+            [
+                'name' => 'Arcadia Express',
+                'category' => 'Visite',
+                'description' => "Montez à bord du petit train pour une visite captivante de notre zoo ! Profitez d'une vue panoramique sur nos habitats animaliers et découvrez des espèces fascinantes venues des quatre coins du monde. Une expérience unique en son genre vous attend à chaque tour de piste.",
+                'image_name' => 'train.jpg',
+                'image_file' => new UploadedFile('public/images/service/train.jpg', 'train.jpg', 'image/jpeg', UPLOAD_ERR_OK, true)
+            ],
+            [
+                'name' => 'Restaurants',
+                'category' => 'Restauration',
+                'description' => "Détendez-vous et savourez un moment délicieux au restaurant du zoo, offrant une vue imprenable sur nos habitats animaliers. Explorez une sélection de plats savoureux inspirés par la diversité de la faune mondiale, parfaits pour combler vos papilles après une journée d'exploration.",
+                'image_name' => 'restaurant.jpg',
+                'image_file' => new UploadedFile('public/images/service/restaurant.jpg', 'restaurant.jpg', 'image/jpeg', UPLOAD_ERR_OK, true)
+            ],
+            [
+                'name' => 'Snacks',
+                'category' => 'Restauration',
+                'description' => "Découvrez une sélection de snacks délicieux lors de votre visite au zoo ! Des options saines comme les fruits frais aux plaisirs gourmands comme les hot-dogs, il y en a pour tous les goûts pour agrémenter votre journée parmi les animaux.",
+                'image_name' => 'snack.jpg',
+                'image_file' => new UploadedFile('public/images/service/snack.jpg', 'snack.jpg', 'image/jpeg', UPLOAD_ERR_OK, true)
+            ]
+        ];
 
-        $activite2 = new Service();
-        $activite2->setName('Interaction avec les animaux');
-        $activite2->setCategory($this->getReference('Activité'));
-        $activite2->setDescription("Au cœur de notre zoo, nous offrons une expérience unique d'interaction douce avec nos résidents animaux. Venez découvrir le plaisir de caresser nos adorables pensionnaires dans un cadre sécurisé et éducatif.");
-        $activite2->setImageName('petting.jpg');
-        $activite2->setImageFile(new UploadedFile('public/images/service/petting.jpg','public/images/service/petting.jpg', 'blob', UPLOAD_ERR_OK, true));
-        $manager->persist($activite2);
-
-        $visite1 = new Service();
-        $visite1->setName('Visite gratuite');
-        $visite1->setCategory($this->getReference('Visite'));
-        $visite1->setDescription("Découvrez la diversité étonnante de la faune mondiale avec des experts passionnés. Apprenez des faits intéressants sur nos résidents à plumes, à poils et à écailles tout en explorant leurs habitats naturels recréés. Une expérience éducative et immersive vous attend à chaque pas.");
-        $visite1->setImageName('guide.jpg');
-        $visite1->setImageFile(new UploadedFile('public/images/service/guide.jpg','public/images/service/guide.jpg', 'blob', UPLOAD_ERR_OK, true));
-        $manager->persist($visite1);
-
-        $visite2 = new Service();
-        $visite2->setName('Arcadia Express');
-        $visite2->setCategory($this->getReference('Visite'));
-        $visite2->setDescription("Montez à bord du petit train pour une visite captivante de notre zoo ! Profitez d'une vue panoramique sur nos habitats animaliers et découvrez des espèces fascinantes venues des quatre coins du monde. Une expérience unique en son genre vous attend à chaque tour de piste.");
-        $visite2->setImageName('feeding.jpg');
-        $visite2->setImageFile(new UploadedFile('public/images/service/train.jpg','public/images/service/train.jpg', 'blob', UPLOAD_ERR_OK, true));
-        $manager->persist($visite2);
-
-        $rest1 = new Service();
-        $rest1->setName('Restaurants');
-        $rest1->setCategory($this->getReference('Restauration'));
-        $rest1->setDescription("Détendez-vous et savourez un moment délicieux au restaurant du zoo, offrant une vue imprenable sur nos habitats animaliers. Explorez une sélection de plats savoureux inspirés par la diversité de la faune mondiale, parfaits pour combler vos papilles après une journée d'exploration.");
-        $rest1->setImageName('restaurant.jpg');
-        $rest1->setImageFile(new UploadedFile('public/images/service/restaurant.jpg','public/images/service/restaurant.jpg', 'blob', UPLOAD_ERR_OK, true));
-        $manager->persist($rest1);
-
-        $rest2 = new Service();
-        $rest2->setName('Snacks');
-        $rest2->setCategory($this->getReference('Restauration'));
-        $rest2->setDescription("Découvrez une sélection de snacks délicieux lors de votre visite au zoo ! Des options saines comme les fruits frais aux plaisirs gourmands comme les hot-dogs, il y en a pour tous les goûts pour agrémenter votre journée parmi les animaux.");
-        $rest2->setImageName('snack.jpg');
-        $rest2->setImageFile(new UploadedFile('public/images/service/snack.jpg','public/images/service/snack.jpg', 'blob', UPLOAD_ERR_OK, true));
-        $manager->persist($rest2);
+        foreach ($services as $serviceData) {
+            $service = new Service();
+            $service->setName($serviceData['name']);
+            $service->setCategory($this->getReference($serviceData['category']));
+            $service->setDescription($serviceData['description']);
+            $service->setImageName($serviceData['image_name']);
+            $service->setImageFile($serviceData['image_file']);
+            $manager->persist($service);
+        }
 
         $manager->flush();
     }
