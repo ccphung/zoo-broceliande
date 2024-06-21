@@ -29,7 +29,7 @@ class Review
     public function __construct()
     {
         $this->date = new \DateTimeImmutable();
-        $this->isVisible = false;
+        $this->setIsVisible(false);
     }
 
     public function getId(): ?int
@@ -61,12 +61,12 @@ class Review
         return $this;
     }
 
-    public function isVisible(): false
+    public function isVisible(): bool
     {
         return $this->isVisible;
     }
 
-    public function setVisible(bool $isVisible): static
+    public function setIsVisible(bool $isVisible): static
     {
         $this->isVisible = $isVisible;
 
