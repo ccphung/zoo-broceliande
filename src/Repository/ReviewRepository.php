@@ -20,8 +20,20 @@ class ReviewRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('r')
             ->select('COUNT(r.id)')
-            ->where('r.isVisible = false')
+            ->andWhere('r.isVisible = :unapproved')
+            ->setParameter('unapproved', false)
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    public function findLastApproved(): ?Review
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.isVisible = :approved')
+            ->setParameter('approved', true)
+            ->orderBy('r.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 }
