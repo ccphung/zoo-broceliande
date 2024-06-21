@@ -45,10 +45,17 @@ class Animal
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    /**
+     * @var Collection<int, Feed>
+     */
+    #[ORM\OneToMany(targetEntity: Feed::class, mappedBy: 'animal')]
+    private Collection $feeds;
+
     public function __construct()
     {
         $this->vetReport = new ArrayCollection();
         $this->updatedAt = new \DateTimeImmutable();
+        $this->feeds = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -153,5 +160,41 @@ class Animal
 
     public function getImageFile(): ?File {
         return $this->imageFile;
+    }
+
+    /**
+     * @return Collection<int, Feed>
+     */
+    public function getFeeds(): Collection
+    {
+        return $this->feeds;
+    }
+
+    public function addFeed(Feed $feed): static
+    {
+        if (!$this->feeds->contains($feed)) {
+            $this->feeds->add($feed);
+            $feed->setAnimal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFeed(Feed $feed): static
+    {
+        if ($this->feeds->removeElement($feed)) {
+            // set the owning side to null (unless already changed)
+            if ($feed->getAnimal() === $this) {
+                $feed->setAnimal(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
+    public function __toString()
+    {
+        return $this->name;
     }
 }
