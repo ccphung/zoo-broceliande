@@ -10,47 +10,23 @@ class OpeningHoursFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $monday = new OpeningHours();
-        $monday->setDay('Lundi');
-        $monday->setOpen('09:00');
-        $monday->setClose('18:30');
-        $manager->persist($monday);
+        $days = [
+            'Lundi' => ['09:00', '18:30'],
+            'Mardi' => ['09:00', '18:30'],
+            'Mercredi' => ['09:00', '18:30'],
+            'Jeudi' => ['09:00', '18:30'],
+            'Vendredi' => ['09:00', '18:30'],
+            'Samedi' => ['09:00', '18:30'],
+            'Dimanche' => ['09:00', '18:30'],
+        ];
 
-        $tuesday = new OpeningHours();
-        $tuesday->setDay('Mardi');
-        $tuesday->setOpen('09:00');
-        $tuesday->setClose('18:30');
-        $manager->persist($tuesday);
-
-        $wednesday = new OpeningHours();
-        $wednesday->setDay('Mercredi');
-        $wednesday->setOpen('09:00');
-        $wednesday->setClose('18:30');
-        $manager->persist($wednesday);
-
-        $thrusday = new OpeningHours();
-        $thrusday->setDay('Jeudi');
-        $thrusday->setOpen('09:00');
-        $thrusday->setClose('18:30');
-        $manager->persist($thrusday);
-
-        $friday = new OpeningHours();
-        $friday->setDay('Vendredi');
-        $friday->setOpen('09:00');
-        $friday->setClose('18:30');
-        $manager->persist($friday);
-
-        $saturday = new OpeningHours();
-        $saturday->setDay('Samedi');
-        $saturday->setOpen('09:00');
-        $saturday->setClose('18:30');
-        $manager->persist($saturday);
-
-        $sunday = new OpeningHours();
-        $sunday->setDay('Dimanche');
-        $sunday->setOpen('09:00');
-        $sunday->setClose('18:30');
-        $manager->persist($sunday);
+        foreach ($days as $day => $hours) {
+            $openingHours = new OpeningHours();
+            $openingHours->setDay($day);
+            $openingHours->setOpen($hours[0]);
+            $openingHours->setClose($hours[1]);
+            $manager->persist($openingHours);
+        }
 
         $manager->flush();
     }

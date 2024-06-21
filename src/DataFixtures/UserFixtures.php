@@ -23,6 +23,15 @@ class UserFixtures extends Fixture
         $admin->setRoles(['ROLE_ADMIN']);
         $manager->persist($admin);
 
+        $employe = new User();
+        $employe->setFirstName('Cédric');
+        $employe->setLastName('Phung');
+        $employe->setUsername('cedric3011@outlook.fr');
+        $employe->setPassword(
+            $this->passwordHasher->hashPassword($employe, 'test'));
+        $employe->setRoles(['ROLE_EMPLOYE']);
+        $manager->persist($employe);
+
         $manager->flush();
     }
 }
