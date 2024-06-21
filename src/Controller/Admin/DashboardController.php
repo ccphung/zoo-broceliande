@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Animal;
+use App\Entity\Feed;
 use App\Entity\Habitat;
 use App\Entity\OpeningHours;
 use App\Entity\Review;
@@ -41,16 +42,18 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Employés/Vétérinaires', 'fa-solid fa-person-digging', User::class)
+        yield MenuItem::linkToCrud('Employé/Vétérinaire', 'fa-solid fa-person-digging', User::class)
         ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Animal', 'fa-solid fa-otter', Animal::class)
         ->setPermission('ROLE_ADMIN');
-        yield MenuItem::linkToCrud('Services', 'fa-solid fa-train', Service::class)
+        yield MenuItem::linkToCrud('Service', 'fa-solid fa-train', Service::class)
         ->setPermission(new Expression('"ROLE_ADMIN" or "ROLE_EMPLOYE"'));
         yield MenuItem::linkToCrud('Habitat', 'fa-solid fa-solid fa-house', Habitat::class)
         ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Horaires', 'fa-regular fa-clock', OpeningHours::class)
         ->setPermission('ROLE_ADMIN');
+        yield MenuItem::linkToCrud('Nourriture donnée', 'fa-solid fa-utensils', Feed::class)
+        ->setPermission('ROLE_EMPLOYE');
         yield MenuItem::linkToCrud('Avis', 'fa-regular fa-comment', Review::class)
         ->setPermission('ROLE_EMPLOYE')
         ->setBadge(
