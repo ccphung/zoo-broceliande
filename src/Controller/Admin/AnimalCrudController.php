@@ -7,7 +7,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Vich\UploaderBundle\Form\Type\VichFileType;
+
+#[IsGranted('ROLE_ADMIN')]
 
 class AnimalCrudController extends AbstractCrudController
 {
