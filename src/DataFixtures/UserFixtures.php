@@ -9,11 +9,15 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixtures extends Fixture
 {
-    public function __construct(
-        private UserPasswordHasherInterface $passwordHasher){}
-    
-    public function load(ObjectManager $manager): void
-    {   
+    private $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
+    public function load(ObjectManager $manager)
+    {
         $admin = new User();
         $admin->setFirstName('José');
         $admin->setLastName('Garcia');
@@ -22,6 +26,7 @@ class UserFixtures extends Fixture
             $this->passwordHasher->hashPassword($admin, 'test'));
         $admin->setRoles(['ROLE_ADMIN']);
         $manager->persist($admin);
+        $this->addReference('José', $admin);
 
         $employe = new User();
         $employe->setFirstName('Cédric');
@@ -31,15 +36,17 @@ class UserFixtures extends Fixture
             $this->passwordHasher->hashPassword($employe, 'test'));
         $employe->setRoles(['ROLE_EMPLOYE']);
         $manager->persist($employe);
+        $this->addReference('Cédric', $employe);
 
         $vet = new User();
         $vet->setFirstName('Jean');
         $vet->setLastName('François');
         $vet->setUsername('jean');
         $vet->setPassword(
-            $this->passwordHasher->hashPassword($employe, 'test'));
+            $this->passwordHasher->hashPassword($vet, 'test'));
         $vet->setRoles(['ROLE_VET']);
         $manager->persist($vet);
+        $this->addReference('Jean', $vet);
 
         $manager->flush();
     }
