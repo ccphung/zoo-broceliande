@@ -44,23 +44,24 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Employé/Vétérinaire', 'fa-solid fa-person-digging', User::class)
-        ->setPermission('ROLE_ADMIN');
+            ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Animal', 'fa-solid fa-otter', Animal::class)
-        ->setPermission('ROLE_ADMIN');
+            ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Service', 'fa-solid fa-train', Service::class)
-        ->setPermission(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_EMPLOYE")'));
+            ->setPermission(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_EMPLOYE")'));
         yield MenuItem::linkToCrud('Habitat', 'fa-solid fa-igloo', Habitat::class)
-        ->setPermission(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_VET")'));
+            ->setPermission(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_VET")'));
         yield MenuItem::linkToCrud('Horaires', 'fa-regular fa-clock', OpeningHours::class)
-        ->setPermission('ROLE_ADMIN');
+            ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Nourriture donnée', 'fa-solid fa-utensils', Feed::class)
-        ->setPermission('ROLE_EMPLOYE');
-        yield MenuItem::linkToCrud('Rapport vétérinaire', 'fas fa-file-medical', VetReport::class);
+            ->setPermission('ROLE_EMPLOYE');
+        yield MenuItem::linkToCrud('Rapport vétérinaire', 'fas fa-file-medical', VetReport::class)
+            ->setPermission('ROLE_VET');
         yield MenuItem::linkToCrud('Avis', 'fa-regular fa-comment', Review::class)
-        ->setPermission('ROLE_EMPLOYE')
-        ->setBadge(
-            $this->reviewRepository->findUnapprovedReviewsCount(),
-            'primary'
-        );
+            ->setPermission('ROLE_EMPLOYE')
+            ->setBadge(
+                $this->reviewRepository->findUnapprovedReviewsCount(),
+                'primary'
+            );
     }
 }
