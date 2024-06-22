@@ -9,6 +9,7 @@ use App\Entity\OpeningHours;
 use App\Entity\Review;
 use App\Entity\Service;
 use App\Entity\User;
+use App\Entity\VetReport;
 use App\Repository\ReviewRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -54,6 +55,7 @@ class DashboardController extends AbstractDashboardController
         ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Nourriture donnée', 'fa-solid fa-utensils', Feed::class)
         ->setPermission('ROLE_EMPLOYE');
+        yield MenuItem::linkToCrud('Rapport vétérinaire', 'fas fa-file-medical', VetReport::class);
         yield MenuItem::linkToCrud('Avis', 'fa-regular fa-comment', Review::class)
         ->setPermission('ROLE_EMPLOYE')
         ->setBadge(

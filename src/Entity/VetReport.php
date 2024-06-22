@@ -14,9 +14,6 @@ class VetReport
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $detail = null;
-
     #[ORM\ManyToOne(inversedBy: 'vetReport')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
@@ -30,7 +27,7 @@ class VetReport
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?food $suggestedFood = null;
+    private ?Food $suggestedFood = null;
 
     #[ORM\Column]
     private ?int $foodQuantity = null;
@@ -44,18 +41,6 @@ class VetReport
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDetail(): ?string
-    {
-        return $this->detail;
-    }
-
-    public function setDetail(string $detail): static
-    {
-        $this->detail = $detail;
-
-        return $this;
     }
 
     public function getUser(): ?User
@@ -94,12 +79,12 @@ class VetReport
         return $this;
     }
 
-    public function getSuggestedFood(): ?food
+    public function getSuggestedFood(): ?Food
     {
         return $this->suggestedFood;
     }
 
-    public function setSuggestedFood(?food $suggestedFood): static
+    public function setSuggestedFood(?Food $suggestedFood): static
     {
         $this->suggestedFood = $suggestedFood;
 
