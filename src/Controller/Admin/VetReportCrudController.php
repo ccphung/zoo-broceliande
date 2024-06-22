@@ -12,6 +12,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
+#[IsGranted('ROLE_VET')]
 
 class VetReportCrudController extends AbstractCrudController
 {
@@ -80,8 +83,6 @@ class VetReportCrudController extends AbstractCrudController
             DateTimeField::new('visitDate')
                 ->setLabel('Date de la visite')
                 ->setColumns(3),
-                
-
         ];
     }
 }
