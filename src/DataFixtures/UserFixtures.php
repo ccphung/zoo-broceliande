@@ -32,6 +32,15 @@ class UserFixtures extends Fixture
         $employe->setRoles(['ROLE_EMPLOYE']);
         $manager->persist($employe);
 
+        $vet = new User();
+        $vet->setFirstName('Jean');
+        $vet->setLastName('François');
+        $vet->setUsername('jean');
+        $vet->setPassword(
+            $this->passwordHasher->hashPassword($employe, 'test'));
+        $vet->setRoles(['ROLE_VET']);
+        $manager->persist($vet);
+
         $manager->flush();
     }
 }
