@@ -50,7 +50,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Service', 'fa-solid fa-train', Service::class)
         ->setPermission(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_EMPLOYE")'));
         yield MenuItem::linkToCrud('Habitat', 'fa-solid fa-solid fa-house', Habitat::class)
-        ->setPermission('ROLE_ADMIN');
+        ->setPermission(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_VET")'));
         yield MenuItem::linkToCrud('Horaires', 'fa-regular fa-clock', OpeningHours::class)
         ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Nourriture donnée', 'fa-solid fa-utensils', Feed::class)
