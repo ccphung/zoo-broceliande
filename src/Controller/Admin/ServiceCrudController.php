@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_EMPLOYE")'))]
 
@@ -35,14 +36,29 @@ class ServiceCrudController extends AbstractCrudController
     {
         return [
             TextField::new('name')
-                ->setLabel('Nom'),
-            AssociationField::new('category'),
+                ->setLabel('Nom')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
+            AssociationField::new('category')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
             TextareaField::new('description')
-                ->setLabel('Description'),
+                ->setLabel('Description')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
             TextField::new('imageName')
-                ->setLabel('Nom de l\'image'),
+                ->setLabel('Nom de l\'image')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
             TextField::new('imageFile')
-                ->setFormType(VichFileType::class),
+                ->setFormType(VichFileType::class)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Veuillez choisir une image'])
+                ]),
         ];
     }
 }
