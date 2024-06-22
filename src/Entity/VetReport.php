@@ -14,9 +14,6 @@ class VetReport
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $detail = null;
 
@@ -28,21 +25,25 @@ class VetReport
     #[ORM\JoinColumn(nullable: false)]
     private ?Animal $animal = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $animalCondition = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?food $suggestedFood = null;
+
+    #[ORM\Column]
+    private ?int $foodQuantity = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $visitDate = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $animalConditionDetail = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): static
-    {
-        $this->date = $date;
-
-        return $this;
     }
 
     public function getDetail(): ?string
@@ -77,6 +78,66 @@ class VetReport
     public function setAnimal(?Animal $animal): static
     {
         $this->animal = $animal;
+
+        return $this;
+    }
+
+    public function getAnimalCondition(): ?string
+    {
+        return $this->animalCondition;
+    }
+
+    public function setAnimalCondition(string $animalCondition): static
+    {
+        $this->animalCondition = $animalCondition;
+
+        return $this;
+    }
+
+    public function getSuggestedFood(): ?food
+    {
+        return $this->suggestedFood;
+    }
+
+    public function setSuggestedFood(?food $suggestedFood): static
+    {
+        $this->suggestedFood = $suggestedFood;
+
+        return $this;
+    }
+
+    public function getFoodQuantity(): ?int
+    {
+        return $this->foodQuantity;
+    }
+
+    public function setFoodQuantity(int $foodQuantity): static
+    {
+        $this->foodQuantity = $foodQuantity;
+
+        return $this;
+    }
+
+    public function getVisitDate(): ?\DateTimeInterface
+    {
+        return $this->visitDate;
+    }
+
+    public function setVisitDate(\DateTimeInterface $visitDate): static
+    {
+        $this->visitDate = $visitDate;
+
+        return $this;
+    }
+
+    public function getAnimalConditionDetail(): ?string
+    {
+        return $this->animalConditionDetail;
+    }
+
+    public function setAnimalConditionDetail(?string $animalConditionDetail): static
+    {
+        $this->animalConditionDetail = $animalConditionDetail;
 
         return $this;
     }
