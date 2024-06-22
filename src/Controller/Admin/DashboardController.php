@@ -54,7 +54,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Horaires', 'fa-regular fa-clock', OpeningHours::class)
             ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Nourriture donnée', 'fa-solid fa-utensils', Feed::class)
-            ->setPermission('ROLE_EMPLOYE');
+            ->setPermission(new Expression('is_granted("ROLE_EMPLOYE") or is_granted("ROLE_VET")'));
         yield MenuItem::linkToCrud('Rapport vétérinaire', 'fas fa-file-medical', VetReport::class)
             ->setPermission('ROLE_VET');
         yield MenuItem::linkToCrud('Avis', 'fa-regular fa-comment', Review::class)
