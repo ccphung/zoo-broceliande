@@ -13,6 +13,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
+use Symfony\Component\Validator\Constraints\Positive;
 
 #[IsGranted('ROLE_VET')]
 
@@ -67,6 +69,9 @@ class VetReportCrudController extends AbstractCrudController
                 ->setColumns(3),
             IntegerField::new('FoodQuantity')
                 ->setLabel('Quantité (en grammes)')
+                ->setFormTypeOption('constraints', [
+                    new Positive(['message' => 'Veuillez entrer un nombre positif'])
+                ])
                 ->setColumns(3),
             FormField::addRow(),
 
@@ -82,7 +87,13 @@ class VetReportCrudController extends AbstractCrudController
 
             DateTimeField::new('visitDate')
                 ->setLabel('Date de la visite')
-                ->setColumns(3),
+                ->setColumns(3)
+                ->setFormTypeOption('constraints', [
+                    new LessThanOrEqual([
+                        'value' => 'today',
+                        'message' => 'La date et l\'heure doivent être antérieures ou égales à la date actuelle'
+                    ])
+                ]),
         ];
     }
 }

@@ -8,6 +8,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
 #[IsGranted('ROLE_ADMIN')]
@@ -32,13 +34,25 @@ class AnimalCrudController extends AbstractCrudController
     {
         return [
             TextField::new('name')
-                ->setLabel('Nom'),
-            AssociationField::new('habitat'),
-            AssociationField::new('species'),
+                ->setLabel('Nom')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
+            AssociationField::new('habitat')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide.']),
+                ]),
+            AssociationField::new('species')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide.']),
+                ]),
             TextField::new('imageName')
                 ->setLabel('Nom de l\'image'),
             TextField::new('imageFile')
-                ->setFormType(VichFileType::class),
+                ->setFormType(VichFileType::class)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Veuillez ajouter une image'])
+                ]),
         ];
     }
 }

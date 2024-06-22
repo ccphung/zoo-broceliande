@@ -10,6 +10,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[IsGranted('ROLE_EMPLOYE')]
 
@@ -36,11 +38,23 @@ class ReviewCrudController extends AbstractCrudController
     {
         return [
             TextField::new('pseudo')
-                ->setLabel('Pseudo'),
+                ->setLabel('Pseudo')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
             TextareaField::new('comment')
-                ->setLabel('Commentaire'),
+                ->setLabel('Commentaire')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
             DateField::new('date')
-                ->setLabel('Date'),
+                ->setLabel('Date')
+                ->setFormTypeOption('constraints', [
+                    new LessThanOrEqual([
+                        'value' => 'today',
+                        'message' => 'La date et l\'heure doivent être antérieures ou égales à la date actuelle'
+                    ])
+                ]),
             BooleanField::new('isVisible')
                 ->setLabel('Approuvé'),
         ];

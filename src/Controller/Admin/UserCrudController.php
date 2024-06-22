@@ -16,6 +16,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[IsGranted('ROLE_ADMIN')]
 
@@ -51,14 +52,31 @@ class UserCrudController extends AbstractCrudController
         ];
 
         $fields = [
-            TextField::new('username')->setLabel('Pseudonyme'),
-            TextField::new('firstName')->setLabel('Prénom'),
-            TextField::new('lastname')->setLabel('Nom de famille'),
+            TextField::new('username')
+                ->setLabel('Pseudonyme')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
+            TextField::new('firstName')
+                ->setLabel('Prénom')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
+            TextField::new('lastname')
+                ->setLabel('Nom de famille')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
             ChoiceField::new('roles', 'Rôles')
                 ->setChoices($roles)
                 ->allowMultipleChoices(true)
                 ->renderExpanded(true) 
                 ->onlyOnForms()
+                ->setFormTypeOptions([
+                    'constraints' => [
+                        new NotBlank(['message' => 'Veuillez choisir au moins une option'])
+                    ]
+                ]),
         ];
 
         if ($pageName === Crud::PAGE_NEW || $pageName === Crud::PAGE_EDIT) {
