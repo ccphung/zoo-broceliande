@@ -1,7 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Rapports Vétérinaires | Arcadia Zoo{% endblock %}
+{% block title %}Rapports Vétérinaire | Arcadia Zoo{% endblock %}
 
 {% block body %}
+    
 
+    <div class="container mt-4">
+        <div class="table-responsive-lg">
+            <table class="table table-striped table-hover">
+                <caption>Rapports vétérinaires</caption>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Espèce</th>
+                        <th scope="col">Nourriture proposée</th>
+                        <th scope="col">Grammage</th>
+                        <th scope="col">État</th>
+                        <th scope="col">Par</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for report in reports %}
+                    <tr>
+                        <td>{{ report.visitDate|date("d/m/Y") }}</td>
+                        <td>{{ report.animal }}</td>
+                        <td>{{ report.animal.species }}</td>
+                        <td>{{ report.suggestedFood }}</td>
+                        <td>{{ report.foodQuantity }}g</td>
+                        <td>{{ report.animalCondition }}</td>
+                        <td>{{ report.user }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="6">{{ report.animalConditionDetail }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
