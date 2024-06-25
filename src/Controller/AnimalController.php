@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Animal;
+use App\Repository\AnimalRepository;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,10 +13,10 @@ class AnimalController extends AbstractController
 {
     
     #[Route('/animal', name: 'app_animal')]
-    public function index(Animal $animal): Response
+    public function index(AnimalRepository $animals): Response
     {
         return $this->render('animal/index.html.twig', [
-            'animal' => $animal
+            'animals' => $animals->findAll()
         ]);
     }
 

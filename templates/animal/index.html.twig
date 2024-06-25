@@ -5,7 +5,26 @@
 {% block body %}
 <div class="animal-container p-5">
     <h1 class="large-font englebert-regular blue text-center green">Tous nos animaux</h1>
+    <div class="d-flex justify-content-center">
+        <p class="medium-font text-white text-center fst-italic col-lg-7 col-md-12">
+            Découvrez une diversité d'animaux fascinants au Zoo d'Arcadia. Chaque espèce a une histoire unique à raconter, offrant une fenêtre sur la beauté et la fragilité de la nature.
+        </p>
+    </div>
     <div class="green-separator mb-5"></div>
-</div>
+        <div class="container">
+            <div class="row">
+                {% for animal in animals %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="circle-img-container">
+                            <img src="{{ asset(vich_uploader_asset(animal)) }}" alt="{{ animal.imageName }}" class="circle-img">
+                        </div>
+                        <div class="d-flex justify-content-center mt-0 mb-3">
+                            <a href="{{ path('app_animal_detail', {'slug': animal.name}) }}" class="btn btn-yellow">Découvrir {{ animal.name }}</a>
+                        </div>
+                    </div>
+                {% endfor %}
 
+            </div>
+        </div>
+    </div>
 {% endblock %}
