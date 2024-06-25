@@ -9,11 +9,19 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-2 col-md-12 p-2">
-            <div class="d-flex">
+            <div class="d-flex justify-content-between align-items-center">
+                <button class="btn" id="show-filters">Voir les filtres <i class="fa-solid fa-arrow-down"></i></button>
+                <div class="text-end mt-3">
+                    <button type="button" class="btn no-visibility" id="close-filters">
+                        <i class="fa-solid fa-times fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="d-flex filters-heading">
                 <i class="fa-solid fa-filter"></i>
                 <p class="fw-bold small-font">Filtres et tris</p>
             </div>
-            <form id="filters">
+            <form id="filters" class="hidden">
                 <div class="form-control p-2">
 
                     {# Date filter #}
@@ -37,9 +45,9 @@
                 
                     {# Vet filter #}
                 <div class="form-control mt-2 p-2">
-                    <label for="vet" name="vet" class="fw-bold mb-2">Vétérinaire</label>
+                    <label for="vet" name="vet" class="fw-bold mb-2">Par</label>
                     <select id="vetSelect" name="vet" class="form-select">
-                        <option value="">Filter par vétérinaire</option>
+                        <option value="">Vétérinaire</option>
                         {% set unique_vets = [] %}
                         {% for report in reports %}
                             {% if report.user not in unique_vets %}
@@ -75,7 +83,7 @@
             </form>
         </div>
 
-        <div class="col-10">
+        <div class="col-lg-10 col-md-12">
             <div id="content">
                 {% include ('vet_report/_content.html.twig') %}
             </div>
@@ -86,4 +94,5 @@
 
     <script src="{{ asset('assets/js/reportFilters.js') }}"></script>
     <script src="{{ asset('assets/js/checkboxes.js') }}"></script>
+    <script src="{{ asset('assets/js/showfilter.js') }}"></script>
 {% endblock %}
