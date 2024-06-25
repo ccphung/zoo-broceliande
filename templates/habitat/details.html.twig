@@ -27,12 +27,11 @@
             <div class="row">
                 {% for animal in habitat.animals %}
                     <div class="col-lg-4 col-md-6">
-                        <p class="text-white medium-font text-center">{{ animal.name }}</p>
                         <div class="circle-img-container">
                             <img src="{{ asset(vich_uploader_asset(animal)) }}" alt="{{ animal.imageName }}" class="circle-img">
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <a href="{{ path('app_animal', {'slug': animal.name}) }}" class="btn btn-yellow">Je découvre</a>
+                        <div class="d-flex justify-content-center mt-0 mb-3">
+                            <a href="{{ path('app_animal', {'slug': animal.name}) }}" class="btn btn-yellow">Découvrir {{ animal.name }}</a>
                         </div>
                     </div>
                 {% else %}
