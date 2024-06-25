@@ -10,12 +10,22 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AnimalController extends AbstractController
 {
-    #[Route('/animal/{slug}', name: 'app_animal')]
-    public function index(
+    
+    #[Route('/animal', name: 'app_animal')]
+    public function index(Animal $animal): Response
+    {
+        return $this->render('animal/index.html.twig', [
+            'animal' => $animal
+        ]);
+    }
+
+
+    #[Route('/animal/{slug}', name: 'app_animal_detail')]
+    public function detail (
         #[MapEntity(mapping: ['slug' => 'name'])] Animal $animal
     ): Response
     {
-        return $this->render('animal/index.html.twig', [
+        return $this->render('animal/detail.html.twig', [
             'animal' => $animal
         ]);
     }
