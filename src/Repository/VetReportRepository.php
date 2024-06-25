@@ -16,7 +16,7 @@ class VetReportRepository extends ServiceEntityRepository
         parent::__construct($registry, VetReport::class);
     }
 
-    public function findByFilter($filterAnimal, $filterDate)
+    public function findByFilter($filterAnimal, $filterDate, $filterMinYear, $filterMaxYear)
     {
         $query = $this->createQueryBuilder('v');
 
@@ -34,6 +34,22 @@ class VetReportRepository extends ServiceEntityRepository
                 ->orderBy('v.visitDate', "DESC");
         }
 
+        if (!empty($filterMinYear)) {
+            $minDate = new \DateTime("$filterMinYear-01-01 00:00:00");
+            $query
+                ->andWhere('v.visitDate >= :minDate')
+                ->setParameter('minDate', $minDate);
+        }
+    
+        if (!empty($filterMaxYear)) {
+            $maxDate = new \DateTime("$filterMaxYear-12-31 23:59:59");
+            $query
+                ->andWhere('v.visitDate <= :maxDate')
+                ->setParameter('maxDate', $maxDate);
+        }
+
         return $query->getQuery()->getResult();
     }
+
+    
 }

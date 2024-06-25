@@ -8,32 +8,45 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-2 col-md-12 border p-2">
-            <p class="fw-bold">Filtres et tris</p>
+        <div class="col-lg-2 col-md-12 p-2">
+            <div class="d-flex">
+                <i class="fa-solid fa-filter"></i>
+                <p class="fw-bold small-font">Filtres et tris</p>
+            </div>
             <form id="filters">
-                <label for="date" name="date">Dates</label>
-                <select id="sortSelect" name="date" class="form-select">
-                    <option value="">Trier par date</option>
-                    <option value="asc">Par ordre croissant</option>
-                    <option value="desc">Par ordre décroissant</option>
-                </select>
+                <div class="form-control p-2">
+                    <label for="date" name="date" class="fw-bold mb-2">Dates</label>
+                    <select id="sortSelect" name="date" class="form-select">
+                        <option value="">Trier par date</option>
+                        <option value="desc">Les rapports les plus récents</option>
+                        <option value="asc">Les rapports les plus anciens</option>
+                    </select>
+
+                    <div class="form-group mt-3">
+                        <label for="year" class="mt-2">Année</label>
+                        <div class="d-flex">
+                            <input type="text" name="yearmin" id="yearmin" placeholder="Min" class="form-control">
+                            <input type="text" name="yearmax" id="yearmax" placeholder="Max" class="form-control">
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="d-flex flex-column mt-3">
-                    <p>Animal</p>
+                <div class="d-flex flex-column mt-3 form-control animal-filter-container">
+                    <p class="fw-bold">Animal</p>
                     <div class="container">
                         <div class="form-check form-switch">
                             <div class="row">
                                 {% for animal in animals %}
                                     <div class="col-lg-12 col-md-6">
                                         <div class="d-flex">
-                                            <input type="checkbox" name="animal[]" id="{{ animal.id }}" value ="{{ animal.id }}" class="form-check-input me-2" checked>
+                                            <input type="checkbox" name="animal[]" id="{{ animal.id }}" value ="{{ animal.id }}" class="form-check-input me-2">
                                             <label for="{{ animal.id }}" class="form-check-label">{{ animal.name }} </label>
                                         </div>
                                     </div>
                                 {% endfor %}
                             </div>
                             <div class="d-flex mt-4">
-                                <input type="checkbox" id="cc" onclick="checkAll(this)" class="form-check-input me-2" checked>
+                                <input type="checkbox" id="cc" onclick="checkAll(this)" class="form-check-input me-2">
                                 <label for="cc" class="form-check-label fst-italic">Tout sélectionner</label>
                             </div>
                         </div>
