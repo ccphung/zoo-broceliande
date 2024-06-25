@@ -19,12 +19,13 @@ class VetReportController extends AbstractController
         $filterAnimal = $request->get('animal');
         $filterMinYear = $request->get('yearmin');
         $filterMaxYear = $request->get('yearmax');
+        $filterVet = $request->get('vet');
 
         if($request->isXmlHttpRequest()){
             
             return new JsonResponse([
                 'content' => $this->renderView('vet_report/_content.html.twig', [
-                    'reports' => $vetreports->findByFilter($filterAnimal, $filterDate, $filterMinYear, $filterMaxYear)
+                    'reports' => $vetreports->findByFilter($filterAnimal, $filterDate, $filterMinYear, $filterMaxYear, $filterVet)
                 ])
             ]);
         } else {

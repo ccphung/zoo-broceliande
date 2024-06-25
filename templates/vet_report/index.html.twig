@@ -15,13 +15,16 @@
             </div>
             <form id="filters">
                 <div class="form-control p-2">
+
+                    {# Date filter #}
                     <label for="date" name="date" class="fw-bold mb-2">Dates</label>
                     <select id="sortSelect" name="date" class="form-select">
                         <option value="">Trier par date</option>
-                        <option value="desc">Les rapports les plus récents</option>
-                        <option value="asc">Les rapports les plus anciens</option>
+                        <option value="desc">Du plus récent</option>
+                        <option value="asc">Du plus ancien</option>
                     </select>
 
+                    {# Year filter #}
                     <div class="form-group mt-3">
                         <label for="year" class="mt-2">Année</label>
                         <div class="d-flex">
@@ -30,7 +33,24 @@
                         </div>
                     </div>
                 </div>
+
                 
+                    {# Vet filter #}
+                <div class="form-control mt-2 p-2">
+                    <label for="vet" name="vet" class="fw-bold mb-2">Vétérinaire</label>
+                    <select id="vetSelect" name="vet" class="form-select">
+                        <option value="">Filter par vétérinaire</option>
+                        {% set unique_vets = [] %}
+                        {% for report in reports %}
+                            {% if report.user not in unique_vets %}
+                                {% set unique_vets = unique_vets | merge([report.user]) %}
+                                <option value="{{ report.user.id }}">{{ report.user }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+
+                {# Animal filter #}
                 <div class="d-flex flex-column mt-3 form-control animal-filter-container">
                     <p class="fw-bold">Animal</p>
                     <div class="container">
