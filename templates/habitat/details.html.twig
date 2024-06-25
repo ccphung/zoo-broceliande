@@ -31,7 +31,7 @@
                             <img src="{{ asset(vich_uploader_asset(animal)) }}" alt="{{ animal.imageName }}" class="circle-img">
                         </div>
                         <div class="d-flex justify-content-center mt-0 mb-3">
-                            <a href="{{ path('app_animal', {'slug': animal.name}) }}" class="btn btn-yellow">Découvrir {{ animal.name }}</a>
+                            <a href="{{ path('app_animal_detail', {'slug': animal.name}) }}" class="btn btn-yellow">Découvrir {{ animal.name }}</a>
                         </div>
                     </div>
                 {% else %}
