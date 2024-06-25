@@ -19,12 +19,18 @@
 }
 
 .dropdown-menu {
-    border: 0px;
-    background: #e6aeae;
+    border: 0; 
 }
 
 .dropdown-item {
-    color: white;
+    color: rgb(5, 4, 4);
+    transition:  0.3s, color 0.3s;
+    color :#8E9F88;
+    font-size: 1.2em;
+}
+
+.dropdown-item:hover {
+    color:#B5C9B0;
 }
 
 @media (min-width : 992px) {
