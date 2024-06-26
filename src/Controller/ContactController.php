@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
@@ -27,10 +26,11 @@ class ContactController extends AbstractController
                 ->from($formData['email'])
                 ->to('votre@email.com')
                 ->subject('Nouveau message depuis le formulaire de contact')
-                ->html('Nom: ' . $formData['lastName'] . '<br>' .
-                       'Prénom: ' . $formData['firstName'] . '<br>' .
-                       'Email: ' . $formData['email'] . '<br>' .
-                       'Message: ' . nl2br($formData['message']));
+                ->html('Nom: ' . htmlspecialchars($formData['lastName']) . '<br>' .
+                       'Prénom: ' . htmlspecialchars($formData['firstName']) . '<br>' .
+                       'Email: ' . htmlspecialchars($formData['email']) . '<br>' .
+                       'Sujet: ' . htmlspecialchars($formData['subject']) . '<br>' .
+                       'Message: ' . nl2br(htmlspecialchars($formData['message'])));
 
             $mailer->send($email);
 
