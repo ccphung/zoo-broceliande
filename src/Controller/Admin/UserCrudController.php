@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use EasyCorp\Bundle\EasyAdminBundle\Config\{Crud, KeyValueStore};
+use EasyCorp\Bundle\EasyAdminBundle\Config\{Action, Actions, Crud, KeyValueStore};
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,8 +13,12 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -23,10 +27,14 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class UserCrudController extends AbstractCrudController
 {
     private $userPasswordHasher;
+    private $mailer;
+    private $urlGenerator;
 
-    public function __construct(UserPasswordHasherInterface $userPasswordHasher)
+
+    public function __construct(UserPasswordHasherInterface $userPasswordHasher, MailerInterface $mailer)
     {
         $this->userPasswordHasher = $userPasswordHasher;
+        $this->mailer = $mailer;
     }
 
     public static function getEntityFqcn(): string
@@ -34,6 +42,41 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
+    // Send email
+    public function configureActions(Actions $actions): Actions
+    {
+        $sendEmail = Action::new('sendEmail', 'Envoyer un email')
+            ->linkToCrudAction('sendEmail')
+            ->addCssClass('btn btn-secondary');
+
+        return $actions
+            ->add(Crud::PAGE_INDEX, $sendEmail)
+            ->add(Crud::PAGE_EDIT, $sendEmail)
+            ->add(Crud::PAGE_NEW, $sendEmail);
+    }
+
+    public function sendEmail(AdminContext $context): RedirectResponse
+    {
+        $user = $context->getEntity()->getInstance();
+        $username = $user->getUsername();
+
+        $email = (new Email())
+            ->from('admin@arcadia.com')
+            ->to($user->getUsername())
+            ->subject("Votre compte utilisateur: $username")
+            ->text("Bonjour,\n\nVotre compte a été créé avec succès. Vous pouvez maintenant vous connecter avec le nom d'utilisateur suivant : $username.")
+            ->html("<p>Bonjour,<p>Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter avec le  nom d'utilisateur suivant : $username.</p>");
+
+
+        $this->mailer->send($email);
+
+        $this->addFlash('success', 'Email envoyé avec succès');
+
+        return $this->redirectToRoute('admin');
+    }
+
+
+    // Configure Crud
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
@@ -44,6 +87,8 @@ class UserCrudController extends AbstractCrudController
             ->setPaginatorPageSize(10);
     }
 
+
+    // Configure Fields
     public function configureFields(string $pageName): iterable
     {
         $roles = [
@@ -52,11 +97,6 @@ class UserCrudController extends AbstractCrudController
         ];
 
         $fields = [
-            TextField::new('username')
-                ->setLabel('Pseudonyme')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
             TextField::new('firstName')
                 ->setLabel('Prénom')
                 ->setFormTypeOption('constraints', [
@@ -64,6 +104,11 @@ class UserCrudController extends AbstractCrudController
                 ]),
             TextField::new('lastname')
                 ->setLabel('Nom de famille')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
+            EmailField::new('username')
+                ->setLabel('Email')
                 ->setFormTypeOption('constraints', [
                     new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
                 ]),
