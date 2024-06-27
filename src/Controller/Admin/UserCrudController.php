@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -55,10 +56,14 @@ class UserCrudController extends AbstractCrudController
             ->add(Crud::PAGE_NEW, $sendEmail);
     }
 
-    public function sendEmail(AdminContext $context): RedirectResponse
+    public function sendEmail(AdminContext $context, UrlGeneratorInterface $urlGenerator): RedirectResponse
     {
         $user = $context->getEntity()->getInstance();
         $username = $user->getUsername();
+        $url = $urlGenerator->generate('admin', [
+            'crudAction' => 'index',
+            'crudControllerFqcn' => 'App\Controller\Admin\UserCrudController',
+        ]);
 
         $email = (new Email())
             ->from('admin@arcadia.com')
@@ -72,7 +77,7 @@ class UserCrudController extends AbstractCrudController
 
         $this->addFlash('success', 'Email envoyé avec succès');
 
-        return $this->redirectToRoute('admin');
+        return $this->redirect($url);
     }
 
 
