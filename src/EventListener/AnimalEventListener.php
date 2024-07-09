@@ -75,4 +75,17 @@ class AnimalEventListener
         $this->documentManager->persist($mongoDocument);
         $this->documentManager->flush();
     }
+
+    public function incrementClickCount(Animal $animal): void
+    {
+        $animalId = $animal->getId();
+
+        $mongoDocument = $this->documentManager->getRepository(AnimalMongoDocument::class)->find($animalId);
+        if ($mongoDocument) {
+            $currentClickCount = $mongoDocument->getClickCount() ?? 0;
+            $mongoDocument->setClickCount($currentClickCount + 1);
+
+            $this->documentManager->flush();
+        }
+    }
 }
