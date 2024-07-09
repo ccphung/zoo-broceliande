@@ -21,7 +21,7 @@ class Animal
     #[Vich\UploadableField (mapping: 'animal', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(type: 'string', length: 50)]
     private ?string $name = null;
 
 
@@ -68,7 +68,7 @@ class Animal
         return $this->name;
     }
 
-    public function setName(string $name): static
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
@@ -134,7 +134,7 @@ class Animal
         return $this->imageName;
     }
 
-    public function setImageName(string $imageName): static
+    public function setImageName(?string $imageName): static
     {
         $this->imageName = $imageName;
 
