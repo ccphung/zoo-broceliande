@@ -11,9 +11,11 @@ doctrine_mongodb:
             auto_mapping: true
             mappings:
                 App:
+                    is_bundle: false
                     dir: '%kernel.project_dir%/src/Document'
                     prefix: 'App\Document'
-
+                    alias: App
+                    type: xml
 when@prod:
     doctrine_mongodb:
         auto_generate_proxy_classes: false
@@ -24,8 +26,8 @@ when@prod:
                     type: service
                     id: doctrine_mongodb.system_cache_pool
 
-    framework:
-        cache:
-            pools:
-                doctrine_mongodb.system_cache_pool:
-                    adapter: cache.system
+framework:
+    cache:
+        pools:
+            doctrine_mongodb.system_cache_pool:
+                adapter: cache.system
