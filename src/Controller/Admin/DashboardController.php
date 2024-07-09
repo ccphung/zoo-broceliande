@@ -63,5 +63,7 @@ class DashboardController extends AbstractDashboardController
                 $this->reviewRepository->findUnapprovedReviewsCount(),
                 'primary'
             );
+        yield MenuItem::linktoRoute('Stats', 'fa-solid fa-chart-column', 'animal_stats')
+        ->setPermission('ROLE_ADMIN');
     }
 }
