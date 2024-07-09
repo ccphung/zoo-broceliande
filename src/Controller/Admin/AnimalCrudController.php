@@ -9,7 +9,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotNull;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
 #[IsGranted('ROLE_ADMIN')]
@@ -47,12 +46,14 @@ class AnimalCrudController extends AbstractCrudController
                     new NotBlank(['message' => 'Ce champ ne peut pas être vide.']),
                 ]),
             TextField::new('imageName')
-                ->setLabel('Nom de l\'image'),
+                ->setLabel('Nom de l\'image')
+                ->hideOnIndex(),
             TextField::new('imageFile')
                 ->setFormType(VichFileType::class)
                 ->setFormTypeOption('constraints', [
                     new NotBlank(['message' => 'Veuillez ajouter une image'])
-                ]),
+                ])
+                ->hideOnIndex(),
         ];
     }
 }
