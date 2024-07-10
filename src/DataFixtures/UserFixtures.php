@@ -31,7 +31,7 @@ class UserFixtures extends Fixture
         $employe = new User();
         $employe->setFirstName('Cédric');
         $employe->setLastName('Phung');
-        $employe->setUsername('cedric3011@outlook.fr');
+        $employe->setUsername('cedric@arcadia.fr');
         $employe->setPassword(
             $this->passwordHasher->hashPassword($employe, 'test'));
         $employe->setRoles(['ROLE_EMPLOYE']);
@@ -41,7 +41,7 @@ class UserFixtures extends Fixture
         $vet = new User();
         $vet->setFirstName('Jean');
         $vet->setLastName('François');
-        $vet->setUsername('jean');
+        $vet->setUsername('jean@arcadia.fr');
         $vet->setPassword(
             $this->passwordHasher->hashPassword($vet, 'test'));
         $vet->setRoles(['ROLE_VET']);
