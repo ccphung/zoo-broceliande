@@ -31,7 +31,7 @@ class Habitat
     /**
      * @var Collection<int, Animal>
      */
-    #[ORM\OneToMany(targetEntity: Animal::class, mappedBy: 'habitat')]
+    #[ORM\OneToMany(targetEntity: Animal::class, mappedBy: 'habitat', cascade: ['remove'])]
     private Collection $animals;
 
     #[ORM\Column(length: 255)]
@@ -113,7 +113,7 @@ class Habitat
         return $this->imageName;
     }
 
-    public function setImageName(string $imageName): static
+    public function setImageName(?string $imageName): static
     {
         $this->imageName = $imageName;
 

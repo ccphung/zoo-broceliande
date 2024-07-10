@@ -36,7 +36,7 @@ class Animal
     /**
      * @var Collection<int, vetreport>
      */
-    #[ORM\OneToMany(targetEntity: VetReport::class, mappedBy: 'animal')]
+    #[ORM\OneToMany(targetEntity: VetReport::class, mappedBy: 'animal', cascade: ['remove'])]
     private Collection $vetReport;
 
     #[ORM\Column(length: 255)]
@@ -48,7 +48,7 @@ class Animal
     /**
      * @var Collection<int, Feed>
      */
-    #[ORM\OneToMany(targetEntity: Feed::class, mappedBy: 'animal')]
+    #[ORM\OneToMany(targetEntity: Feed::class, mappedBy: 'animal', cascade: ['remove'])]
     private Collection $feeds;
 
     public function __construct()
