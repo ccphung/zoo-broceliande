@@ -53,6 +53,13 @@ class ServiceFixtures extends Fixture
                 'description' => "Découvrez une sélection de snacks délicieux lors de votre visite au zoo ! Des options saines comme les fruits frais aux plaisirs gourmands comme les hot-dogs, il y en a pour tous les goûts pour agrémenter votre journée parmi les animaux.",
                 'image_name' => 'snack.jpg',
                 'image_file' => new UploadedFile('public/images/service/snack.jpg', 'snack.jpg', 'image/jpeg', UPLOAD_ERR_OK, true)
+            ],
+            [
+                'name' => 'Anniversaire au Zoo',
+                'category' => 'Evenement',
+                'description' => "Célébrez votre anniversaire au zoo avec une journée pleine d'aventures et de découvertes ! Profitez d'une visite guidée spéciale, d'ateliers interactifs avec les animaux, et d'un goûter d'anniversaire avec vos amis et votre famille. Faites de votre anniversaire un moment inoubliable parmi les créatures fascinantes du monde animal.",
+                'image_name' => 'birthday.jpg',
+                'image_file' => new UploadedFile('public/images/service/birthday.jpg', 'birthday.jpg', 'image/jpeg', UPLOAD_ERR_OK, true)
             ]
         ];
 

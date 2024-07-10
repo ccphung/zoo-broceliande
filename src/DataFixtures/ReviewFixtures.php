@@ -37,6 +37,7 @@ class ReviewFixtures extends Fixture
             $review = new Review();
             $review->setPseudo($reviewData['pseudo']);
             $review->setComment($reviewData['comment']);
+            $review->setIsVisible(true);
             $manager->persist($review);
         }
 
