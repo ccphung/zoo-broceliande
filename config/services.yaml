@@ -28,6 +28,23 @@ services:
             - { name: doctrine.event_listener, event: preRemove }
             - { name: doctrine.event_listener, event: postRemove }
             
+    Aws\S3\S3Client:
+        arguments:
+            - 
+                version: 'latest'
+                region: '%env(string:AWS_REGION)%'
+                credentials:
+                    key: '%env(string:AWS_ACCESS_KEY_ID)%'
+                    secret: '%env(string:AWS_SECRET_ACCESS_KEY)%'
+                S3:
+                    version: "2006-03-01"
+                bucket: '%env(AWS_BUCKET_NAME)%'
+                config:
+                    verify: true
+                    cafile: 'C:\xampp\php\extras\ssl\cacert.pem'
+                http:
+                    verify: false
+                    endpoint: 'https://accesspoint-arcadia-tjy6mm3jwbiqxbac9q7ixq34pw8oheun1a-s3alias-123456789012.s3-accesspoint.us-west-2.amazonaws.com'
             
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
