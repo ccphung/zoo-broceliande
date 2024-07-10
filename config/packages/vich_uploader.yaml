@@ -1,19 +1,35 @@
 vich_uploader:
     db_driver: orm
+    storage: flysystem
 
     mappings:
        service:
-           uri_prefix: /images/upload/service
-           upload_destination: '%kernel.project_dir%/public/images/upload/service'
-           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           uri_prefix: '%env(APP_UPLOAD_SERVICE_URI_PREFIX)%'
+           upload_destination: default
+           namer: 
+                service: 'Vich\UploaderBundle\Naming\PropertyNamer'
+                options: 
+                    property: 'name'
+           inject_on_load: true
            delete_on_update: true
+           delete_on_remove: true
        animal:
-           uri_prefix: /images/upload/animal
-           upload_destination: '%kernel.project_dir%/public/images/upload/animal'
-           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           uri_prefix: '%env(APP_UPLOAD_SERVICE_URI_PREFIX)%'
+           upload_destination: default
+           namer: 
+                service: 'Vich\UploaderBundle\Naming\PropertyNamer'
+                options: 
+                    property: 'name'
+           inject_on_load: true
            delete_on_update: true
+           delete_on_remove: true
        habitat:
-           uri_prefix: /images/upload/habitat
-           upload_destination: '%kernel.project_dir%/public/images/upload/habitat'
-           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           uri_prefix: '%env(APP_UPLOAD_SERVICE_URI_PREFIX)%'
+           upload_destination: default
+           namer: 
+                service: 'Vich\UploaderBundle\Naming\PropertyNamer'
+                options: 
+                    property: 'name'
+           inject_on_load: true
            delete_on_update: true
+           delete_on_remove: true
