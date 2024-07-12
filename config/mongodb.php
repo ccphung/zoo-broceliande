@@ -18,11 +18,17 @@ $manager = new MongoDB\Driver\Manager(
                     'proxy' => $proxyUrl,
                     'request_fulluri' => true,
                 ],
+                'ssl' => [
+                    'verify_peer' => true,
+                    'verify_peer_name' => true,
+                    'allow_self_signed' => false,
+                ],
             ]),
         ],
     ]
 );
 
+// Exemple de requête pour tester la connexion
 try {
     $query = new MongoDB\Driver\Query([]);
     $cursor = $manager->executeQuery('database_name.collection_name', $query);
