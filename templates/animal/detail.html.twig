@@ -17,12 +17,12 @@
                 </div>
             </div>
             <div class="col-lg-5 col-md-12 mt-3 text-white">
-                <p class="medium-font"><span class="green">Prénom : </span>{{ animal.name }}</p>
-                <p class="medium-font"><span class="green">Espèce : </span>{{ animal.species }}</p>
-                <p class="medium-font"><span class="green">Habitat : </span> 
+                <p class="small-font"><span class="green">Prénom : </span>{{ animal.name }}</p>
+                <p class="small-font"><span class="green">Espèce : </span>{{ animal.species }}</p>
+                <p class="small-font"><span class="green">Habitat : </span> 
                     <a href="{{ path('habitat_details', {'slug': animal.habitat}) }}" class="yellow">{{ animal.habitat}}</a>
                 </p>
-                <p class="medium-font"><span class="green">Description : </span>{{ animal.detail }}</p>
+                <p class="small-font"><span class="green">Description : </span>{{ animal.detail }}</p>
             </div>
         </div>
     </div>
