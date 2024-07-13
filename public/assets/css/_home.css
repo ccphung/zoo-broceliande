@@ -99,20 +99,6 @@
     display:none;
 }
 
-.item:hover .hover-text {
-    display: block;
-    position: absolute;
-    top: 20%;
-    left: 15%;
-    width: 60%;
-    font-size: 1.5em;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-}
 
 .hover-darken:hover img {
     display: inline-block;
@@ -144,4 +130,20 @@
     .rectangle-container img {
         width: 80vw;
     }
+
+    
+.item:hover .hover-text {
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    width: 60%;
+    font-size: 1.5em;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
 }
