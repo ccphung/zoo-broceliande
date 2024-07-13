@@ -294,6 +294,10 @@ body {
     .hero-font {
         font-size: 2.5em;
     }
+
+    .large-font {
+        font-size: 3em;
+    }
     
     .medium-circle {
         width: 300px;
