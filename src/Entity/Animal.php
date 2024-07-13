@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AnimalRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -50,6 +51,9 @@ class Animal
      */
     #[ORM\OneToMany(targetEntity: Feed::class, mappedBy: 'animal', cascade: ['remove'])]
     private Collection $feeds;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $detail = null;
 
     public function __construct()
     {
@@ -196,5 +200,17 @@ class Animal
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getDetail(): ?string
+    {
+        return $this->detail;
+    }
+
+    public function setDetail(string $detail): static
+    {
+        $this->detail = $detail;
+
+        return $this;
     }
 }
