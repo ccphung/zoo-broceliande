@@ -47,7 +47,7 @@ class ReviewType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn-yellow mt-3'
+                    'class' => 'btn btn-yellow mt-3'
                 ],
                 'label' => 'Envoyer'
             ])

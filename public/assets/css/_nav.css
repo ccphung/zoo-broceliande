@@ -11,11 +11,11 @@
 
 .nav-link {
     font-size: 1.5em;
-    color:#8E9F88;
+    color:#103244;;
 }
 
 .nav-link:hover {
-    color:#B5C9B0;
+    color:#103244a8;
 }
 
 .dropdown-menu {
@@ -25,12 +25,12 @@
 .dropdown-item {
     color: rgb(5, 4, 4);
     transition:  0.3s, color 0.3s;
-    color :#8E9F88;
+    color :#103244;
     font-size: 1.2em;
 }
 
 .dropdown-item:hover {
-    color:#B5C9B0;
+    color:#103244c5;
 }
 
 @media (min-width : 992px) {
