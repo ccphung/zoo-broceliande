@@ -30,7 +30,7 @@
 /* Habitat setion */
 .habitat-section {
     background: #112E31;
-    background: linear-gradient(#364932, #0D2831);
+    background: linear-gradient(#364932, #153A3D);
 }
 
 .rectangle-container {
@@ -49,6 +49,12 @@
 /* Service section */
 .service-section {
     background: #0D2831;
+}
+
+/* Animal section */
+
+.animal-bg {
+    background: linear-gradient( #153A3D, #0D2831);
 }
 
 /* Review section */

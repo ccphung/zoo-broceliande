@@ -6,14 +6,14 @@
 
 <div class="d-flex justify-content-center">
     <div class="hidden m-5">
-        <img src="{{asset('images/animal/toucan.jpg')}}" alt="toucan" class="medium-circle ms-5">
+        <img src="{{asset('images/animal/girafe2.jpg')}}" alt="toucan" class="medium-circle ms-5">
     </div>
 
     <div class="m-5">
-        <h1 class="text-center large-font englebert-regular yellow">Horaires du parc</h1>
-        <div class="yellow-separator mb-5"></div>
+        <h1 class="text-center medium-large-font englebert-regular dark-blue">Horaires du parc</h1>
+        <div class="blue-separator mb-5"></div>
             {% for hour in hours %}
-                <p class="text-center small-font fw-bold">{{ hour.day }} : {{ hour.open }} - {{ hour.close }}</p>
+                <p class="text-center small-font"><span class="fw-bold">{{ hour.day }}</span> : {{ hour.open }} - {{ hour.close }}</p>
             {% endfor %}
     </div>
 </div>

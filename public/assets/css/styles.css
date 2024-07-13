@@ -285,3 +285,15 @@ body {
         padding-left: 200px;
     }
 }
+
+@media screen and (max-width : 992px){
+    .large-font {
+        font-size: 2em;
+    }
+    
+    .medium-circle {
+        width: 300px;
+        height: auto;
+    }
+}
+
