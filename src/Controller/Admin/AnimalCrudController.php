@@ -49,6 +49,9 @@ class AnimalCrudController extends AbstractCrudController
                 ]),
             TextareaField::new('detail')
                 ->setLabel('Description')
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide.']),
+                ])
                 ->hideOnIndex(),
             TextField::new('imageName')
                 ->setLabel('Nom de l\'image')
