@@ -5,8 +5,8 @@
 {% block body %}
 
 <div class="login-container container mb-5 mt-5">
-    <div class="row d-flex justify-content-center m-5">
-        <div class="col-lg-4 col-md-6">
+    <div class="row d-flex justify-content-center m-3">
+        <div class="col-lg-5 col-md-8">
             <form method="post">
                 {% if error %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -17,8 +17,8 @@
                         Vous êtes connecté(e) comme {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
                     </div>
                 {% endif %}
-                <h1 class="h3 mb-3 medium-large-font text-center">Se connecter</h1>
-                <div class="black-separator mb-5"></div>
+                <h1 class="h3 mb-3 medium-large-font text-center light-blue">Se connecter</h1>
+                <div class="lightblue-separator mb-5"></div>
 
                 <label for="inputUsername">Nom d'utilisateur</label>
                 <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required>
@@ -28,7 +28,7 @@
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-                <button class="mt-4 mb-5 btn btn-gray" type="submit">
+                <button class="mt-4 mb-5 btn btn-blue" type="submit">
                     Valider
                 </button>
             </form>
