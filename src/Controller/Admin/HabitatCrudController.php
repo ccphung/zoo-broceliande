@@ -7,8 +7,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use phpDocumentor\Reflection\PseudoTypes\PositiveInteger;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -69,6 +71,12 @@ class HabitatCrudController extends AbstractCrudController
                 ->setDisabled($isVet)
                 ->setFormTypeOption('constraints', [
                     new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
+                ]),
+
+            IntegerField::new('area')
+                ->setLabel('Superficie (km²)')
+                ->setFormTypeOption('constraints', [
+                    new PositiveInteger(['message' => 'Veuillez saisir un nombre positif'])
                 ]),
 
             TextField::new('imageName')
