@@ -43,6 +43,9 @@ class Habitat
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $habitatRemark = null;
 
+    #[ORM\Column]
+    private ?int $area = null;
+
     public function __construct()
     {
         $this->animals = new ArrayCollection();
@@ -156,5 +159,17 @@ class Habitat
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getArea(): ?int
+    {
+        return $this->area;
+    }
+
+    public function setArea(int $area): static
+    {
+        $this->area = $area;
+
+        return $this;
     }
 }
