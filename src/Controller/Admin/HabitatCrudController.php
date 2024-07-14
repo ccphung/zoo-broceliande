@@ -10,11 +10,12 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use phpDocumentor\Reflection\PseudoTypes\PositiveInteger;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Positive;
+use Symfony\Component\Validator\Constraints\PositiveOrZero;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
 #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_VET")'))]
@@ -76,7 +77,7 @@ class HabitatCrudController extends AbstractCrudController
             IntegerField::new('area')
                 ->setLabel('Superficie (km²)')
                 ->setFormTypeOption('constraints', [
-                    new PositiveInteger(['message' => 'Veuillez saisir un nombre positif'])
+                    new Positive(['message' => 'Veuillez saisir un nombre positif'])
                 ]),
 
             TextField::new('imageName')
