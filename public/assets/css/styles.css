@@ -219,8 +219,8 @@ body {
 }
 
 .circle-img-container {
-    width: 300px;
-    height: 300px; 
+    width: 250px;
+    height: 250px; 
     margin: 20px auto; 
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     overflow: hidden;
