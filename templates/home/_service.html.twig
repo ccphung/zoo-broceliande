@@ -1,8 +1,8 @@
 
 {# Service #}
 <section class="service-section p-5">
-    <div class="m-2 d-flex flex-column justify-content-center">
-        <h2 class="medium-large-font englebert-regular text-center text-white">Services & Activités</h2>
+    <div class="d-flex flex-column justify-content-center">
+        <h2 class="medium-large-font englebert-regular text-center light-blue">Services & Activités</h2>
         <p class="text-white text-center small-font ">Laissez-vous guider à travers nos diverses <span class="fw-bold">activités</span> et découvrez nos nombreux <span class="fw-bold">services de restauration</span>.</p>
         <div class="owl-carousel owl-theme d-flex">
             {% for service in services %}
@@ -19,9 +19,9 @@
             </div>
             {% endfor %}
         </div>
-        <div class="d-flex flex-column align-items-center justify-content-center mt-3">
+        <div class="d-flex flex-column align-items-center justify-content-center margin-top">
             <p class="medium-font yellow raleway text-center">Explorez tous nos fabuleux services ici!</p>
-            <a href="{{ path('app_service') }}" class="btn btn-yellow">Je découvre les services ></a>
+            <a href="{{ path('app_service') }}" class="btn btn-blue">Je découvre les services ></a>
         </div>
     </div>
 </section>
