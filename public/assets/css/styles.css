@@ -278,6 +278,10 @@ body {
     height: 10px;
     clip-path: polygon(35% 60%, 77% 55%, 98% 66%, 0 68%);
 }
+/* Margins */
+.margin-top {
+    margin-top: 10px;
+}
 
 /* Media queries */
 @media screen and (min-width : 992px){
@@ -288,6 +292,11 @@ body {
     .service-section {
         padding-left: 200px;
     }
+
+    .margin-top {
+        margin-top: 100px;
+    }
+    
 }
 
 @media screen and (max-width : 992px){
