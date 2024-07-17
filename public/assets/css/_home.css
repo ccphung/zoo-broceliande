@@ -105,13 +105,6 @@
     display:none;
 }
 
-
-.hover-darken:hover img {
-    display: inline-block;
-    transition: transform 0.2s ease;
-    filter: brightness(50%);
-}
-
 /* Media queries */
 @media (max-width : 992px) and (orientation: portrait) {
     .hero-image {
@@ -138,18 +131,25 @@
     }
 
     
-.item:hover .hover-text {
-    display: block;
-    position: absolute;
-    top: 20%;
-    left: 15%;
-    width: 60%;
-    font-size: 1.5em;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-}
+    .item:hover .hover-text {
+        display: block;
+        position: absolute;
+        top: 20%;
+        left: 15%;
+        width: 60%;
+        font-size: 1.5em;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+    }
+
+    
+    .hover-darken:hover img {
+        display: inline-block;
+        transition: transform 0.2s ease;
+        filter: brightness(50%);
+    }
 }
