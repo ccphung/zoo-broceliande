@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Animal;
 use App\Entity\VetReport;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -57,5 +58,14 @@ class VetReportRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-    
+    public function findAnimal(Animal $animal): ?VetReport
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.animal = :animal')
+            ->setParameter('animal', $animal)
+            ->orderBy('v.visitDate', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
