@@ -8,6 +8,7 @@
 @import url('_animal.css');
 @import url('_login.css');
 @import url('_vetreport.css');
+@import url('_carousel.css');
 
 /* Body */
 body {
@@ -70,6 +71,10 @@ body {
 
 .green {
     color:#B5C9B0;
+}
+
+.dark-green {
+    color:#364932;
 }
 /* Image */
 .large-img {
