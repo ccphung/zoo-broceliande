@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Animal;
 use App\EventListener\AnimalEventListener;
 use App\Repository\AnimalRepository;
+use App\Repository\VetReportRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,13 +34,14 @@ class AnimalController extends AbstractController
 
     #[Route('/animal/{slug}', name: 'app_animal_detail')]
     public function detail (
-        #[MapEntity(mapping: ['slug' => 'name'])] Animal $animal
+        #[MapEntity(mapping: ['slug' => 'name'])] Animal $animal, VetReportRepository $vetReport
     ): Response
     {
         $this->animalEventListener->incrementClickCount($animal);
 
         return $this->render('animal/detail.html.twig', [
-            'animal' => $animal
+            'animal' => $animal,
+            'report' => $vetReport->findAnimal($animal)
         ]);
     }
 }
