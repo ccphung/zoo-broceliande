@@ -69,7 +69,8 @@ class FeedCrudController extends AbstractCrudController
             IntegerField::new('quantity')
                 ->setLabel('Quantité (en grammes)')
                 ->setFormTypeOption('constraints', [
-                    new Positive(['message' => 'Veuillez entrer un nombre positif'])
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide']),
+                    new Positive(['message' => "Veuillez entrer un nombre positif"])
                 ]),
             DateTimeField::new('date', 'Date et Heure')
                 ->setFormTypeOption('constraints', [

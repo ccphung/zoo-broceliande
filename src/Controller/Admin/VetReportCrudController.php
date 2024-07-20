@@ -17,7 +17,10 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Validator\Constraints\LessThanOrEqual;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\Positive;
+use Symfony\Component\Validator\Constraints\PositiveOrZero;
 
 #[IsGranted('ROLE_VET')]
 class VetReportCrudController extends AbstractCrudController implements EventSubscriberInterface
@@ -65,7 +68,8 @@ class VetReportCrudController extends AbstractCrudController implements EventSub
             IntegerField::new('FoodQuantity')
                 ->setLabel('Quantité (en grammes)')
                 ->setFormTypeOption('constraints', [
-                    new Positive(['message' => 'Veuillez entrer un nombre positif'])
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide']),
+                    new Positive(['message' => "Veuillez entrer un nombre positif"])
                 ])
                 ->setColumns(3),
             FormField::addRow(),
