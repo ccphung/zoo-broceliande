@@ -77,7 +77,8 @@ class HabitatCrudController extends AbstractCrudController
             IntegerField::new('area')
                 ->setLabel('Superficie (km²)')
                 ->setFormTypeOption('constraints', [
-                    new Positive(['message' => 'Veuillez saisir un nombre positif'])
+                    new NotBlank(['message' => 'Ce champ ne peut pas être vide']),
+                    new Positive(['message' => "Veuillez entrer un nombre positif"])
                 ]),
 
             TextField::new('imageName')
