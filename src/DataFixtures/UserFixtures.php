@@ -23,7 +23,7 @@ class UserFixtures extends Fixture
         $admin->setLastName('Garcia');
         $admin->setUsername('jose@arcadia.fr');
         $admin->setPassword(
-            $this->passwordHasher->hashPassword($admin, 'test'));
+            $this->passwordHasher->hashPassword($admin, 'L5mgSR48mX3r4g!'));
         $admin->setRoles(['ROLE_ADMIN']);
         $manager->persist($admin);
         $this->addReference('José', $admin);
@@ -33,7 +33,7 @@ class UserFixtures extends Fixture
         $employe->setLastName('Phung');
         $employe->setUsername('cedric@arcadia.fr');
         $employe->setPassword(
-            $this->passwordHasher->hashPassword($employe, 'test'));
+            $this->passwordHasher->hashPassword($employe, 'L5mgSR48mX3r4g!'));
         $employe->setRoles(['ROLE_EMPLOYE']);
         $manager->persist($employe);
         $this->addReference('Cédric', $employe);
@@ -43,7 +43,7 @@ class UserFixtures extends Fixture
         $vet->setLastName('François');
         $vet->setUsername('jean@arcadia.fr');
         $vet->setPassword(
-            $this->passwordHasher->hashPassword($vet, 'test'));
+            $this->passwordHasher->hashPassword($vet, 'L5mgSR48mX3r4g!'));
         $vet->setRoles(['ROLE_VET']);
         $manager->persist($vet);
         $this->addReference('Jean', $vet);
