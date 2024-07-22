@@ -41,6 +41,7 @@ class ServiceCrudController extends AbstractCrudController
                     new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
                 ]),
             AssociationField::new('category')
+                ->setLabel('Categorie')
                 ->setFormTypeOption('constraints', [
                     new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
                 ]),
