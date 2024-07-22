@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\OpeningHours;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -17,6 +19,13 @@ class OpeningHoursCrudController extends AbstractCrudController
     {
         return OpeningHours::class;
     }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable(Action::NEW);
+    }
+
 
     public function configureCrud(Crud $crud): Crud
     {
