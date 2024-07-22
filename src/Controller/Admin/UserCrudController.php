@@ -140,7 +140,7 @@ class UserCrudController extends AbstractCrudController
                     'constraints' => [
                         new Regex([
                             'pattern' => "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/",
-                            'message' => "Le mot de passe doit contenir au moins 12 caractères, dont 1 majuscule, 1 miniscule, 1 caractère spécial et 1 chiffre",
+                            'message' => "Le mot de passe doit contenir au moins 12 caractères, dont 1 majuscule, 1 minuscule, 1 caractère spécial et 1 chiffre",
                         ]),
                     ],
                 ])
