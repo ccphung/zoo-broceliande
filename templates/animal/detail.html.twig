@@ -25,10 +25,13 @@
                 </p>
                 <p class="small-font"><span class="green">Description : </span>{{ animal.detail }}</p>
                 
-                <h2 class="englebert-regular medium-font mt-3 text-center">Avis du vétérinaire</h2>
+                <h2 class="englebert-regular medium-font mt-5 text-center">Avis du vétérinaire</h2>
                 <p class="small-font"><span class="green">Date de la visite: </span>{{ report.visitDate|date("d/m/Y", "Europe/Paris")}}</p>
                 <p class="small-font"><span class="green">Etat: </span>{{ report.animalCondition }}</p>
-                <p class="small-font"><span class="green">Détail: </span>{{ report.animalConditionDetail }}</p>
+
+                {% if report.animalConditionDetail %}
+                    <p class="small-font"><span class="green">Détail: </span>{{ report.animalConditionDetail }}</p>
+                {% endif %}
                 
             </div>
         </div>
