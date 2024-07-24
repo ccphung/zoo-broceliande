@@ -24,7 +24,7 @@ class ContactController extends AbstractController
 
             $email = (new TemplatedEmail())
                 ->from($formData['email'])
-                ->to('votre@email.com')
+                ->to('jose@arcadia.fr')
                 ->subject('Nouveau message depuis le formulaire de contact')
                 ->html('Nom: ' . htmlspecialchars($formData['lastName']) . '<br>' .
                        'Prénom: ' . htmlspecialchars($formData['firstName']) . '<br>' .
