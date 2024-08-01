@@ -24,12 +24,12 @@
                     <a href="{{ path('habitat_details', {'slug': animal.habitat}) }}" class="yellow">{{ animal.habitat}}</a>
                 </p>
                 <p class="small-font"><span class="green">Description : </span>{{ animal.detail }}</p>
-                
+
+                {% if report %}
                 <h2 class="englebert-regular medium-font mt-5 text-center">Avis du vétérinaire</h2>
                 <p class="small-font"><span class="green">Date de la visite: </span>{{ report.visitDate|date("d/m/Y", "Europe/Paris")}}</p>
                 <p class="small-font"><span class="green">Etat: </span>{{ report.animalCondition }}</p>
 
-                {% if report.animalConditionDetail %}
                     <p class="small-font"><span class="green">Détail: </span>{{ report.animalConditionDetail }}</p>
                 {% endif %}
                 
