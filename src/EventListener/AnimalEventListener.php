@@ -39,18 +39,8 @@ class AnimalEventListener
         $mongoDocument = $this->documentManager->getRepository(AnimalMongoDocument::class)->find($animalId);
         if ($mongoDocument) {
             $this->documentManager->remove($mongoDocument);
+            $this->documentManager->flush();
         }
-    }
-
-    public function postRemove(LifecycleEventArgs $args)
-    {
-        $entity = $args->getObject();
-
-        if (!$entity instanceof Animal) {
-            return;
-        }
-
-        $this->documentManager->flush();
     }
 
     private function synchronizeAnimalWithMongo(LifecycleEventArgs $args)
