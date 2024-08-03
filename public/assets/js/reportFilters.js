@@ -10,7 +10,6 @@ window.onload = () => {
             form.forEach((value, key) => {
                 params.append(key, value);
             });
-            params.append('ajax', '1');
 
             const url = new URL(window.location.href);
             
