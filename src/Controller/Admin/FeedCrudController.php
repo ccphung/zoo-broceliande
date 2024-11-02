@@ -75,7 +75,7 @@ class FeedCrudController extends AbstractCrudController
             DateTimeField::new('date', 'Date et Heure')
                 ->setFormTypeOption('constraints', [
                     new LessThanOrEqual([
-                        'value' => 'today',
+                        'value' => 'now',
                         'message' => 'La date et l\'heure doivent être antérieures ou égales à la date actuelle'
                     ])
                 ]),
