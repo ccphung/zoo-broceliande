@@ -82,8 +82,8 @@ class VetReportCrudController extends AbstractCrudController implements EventSub
                 ->setColumns(3)
                 ->setFormTypeOption('constraints', [
                     new LessThanOrEqual([
-                        'value' => 'today',
-                        'message' => 'La date et l\'heure doivent être antérieures ou égales à la date actuelle'
+                        'value' => 'now',
+                        'message' => 'Veuillez entrer une date et une heure antérieures à maintenant.'
                     ])
                 ]),
             AssociationField::new('user')
