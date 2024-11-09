@@ -1,0 +1,13 @@
+.carousel-bg {
+    background: linear-gradient(#B5C9B0, #364932);
+}
+
+.darken {
+    filter: brightness(80%);
+}
+
+@media screen and (min-width : 992px){
+    .carousel {
+        width:55rem;
+    }
+}

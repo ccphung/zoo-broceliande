@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les services | Arcadia Zoo{% endblock %}
+
+{% block body %}
+
+<div class="service-container p-5">
+    <h1 class="large-font englebert-regular light-blue text-center mt-5">Tous nos services</h1>
+        <div class="d-flex justify-content-center">
+            <p class="medium-font text-white text-center fst-italic col-lg-7 col-md-12">Nous offrons des visites guidées, des ateliers éducatifs et des rencontres animales pour enrichir votre expérience.</p>
+        </div>
+
+    <div class="lightblue-separator mb-5"></div>
+    
+    <div class="d-flex justify-content-center service-filter">  
+        <button class="btn btn-blue m-2" data-category="all">Tout voir</button>
+        {% for category in categories %}
+            <button class="btn btn-yellow m-2" data-category="{{ category.id }}">{{ category.label }}</button>
+        {% endfor %}
+    </div>
+
+    <div class="container-fluid">
+        <div id="content" class="row">
+                {% include "service/_content.html.twig" %}
+            </div>
+        </div>
+
+</div>
+
+<script src="{{ asset('assets/js/serviceFilters.js') }}"></script>
+
+{% endblock %}

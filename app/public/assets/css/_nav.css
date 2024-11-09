@@ -1,0 +1,40 @@
+/* Navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.logo {
+    height: 4em;
+}
+
+.nav-link {
+    color:#103244;;
+}
+
+.nav-link:hover {
+    color:#103244a8;
+}
+
+.dropdown-menu {
+    border: 0; 
+}
+
+.dropdown-item {
+    color: rgb(5, 4, 4);
+    transition:  0.3s, color 0.3s;
+    color :#103244;
+    font-size: 0.9em;
+}
+
+.dropdown-item:hover {
+    color:#103244c5;
+}
+
+@media (min-width : 992px) {
+    .nav-item, .dropdown-menu {
+        margin-right: 20px;
+    }
+}
+

@@ -1,0 +1,45 @@
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 4307:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - 27018:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - ./mongo:/data/db
+  php:
+    container_name: php
+    build: 
+      context: ./php
+    ports:
+      - 8081:80
+    volumes:
+      - ./apache/default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./app:/var/www
+    depends_on:
+      - mysql
+      - mongodb
+  phpma:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 8899:80

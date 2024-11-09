@@ -1,0 +1,35 @@
+vich_uploader:
+    db_driver: orm
+    storage: flysystem
+
+    mappings:
+       service:
+           uri_prefix: '%env(APP_UPLOAD_SERVICE_URI_PREFIX)%'
+           upload_destination: default
+           namer: 
+                service: 'Vich\UploaderBundle\Naming\PropertyNamer'
+                options: 
+                    property: 'name'
+           inject_on_load: true
+           delete_on_update: true
+           delete_on_remove: true
+       animal:
+           uri_prefix: '%env(APP_UPLOAD_SERVICE_URI_PREFIX)%'
+           upload_destination: default
+           namer: 
+                service: 'Vich\UploaderBundle\Naming\PropertyNamer'
+                options: 
+                    property: 'name'
+           inject_on_load: true
+           delete_on_update: true
+           delete_on_remove: true
+       habitat:
+           uri_prefix: '%env(APP_UPLOAD_SERVICE_URI_PREFIX)%'
+           upload_destination: default
+           namer: 
+                service: 'Vich\UploaderBundle\Naming\PropertyNamer'
+                options: 
+                    property: 'name'
+           inject_on_load: true
+           delete_on_update: true
+           delete_on_remove: true
