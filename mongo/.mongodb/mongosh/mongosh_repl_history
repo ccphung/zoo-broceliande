@@ -1,0 +1,3 @@
+exit
+db.system.users.find()
+use admin
