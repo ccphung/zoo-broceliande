@@ -1,0 +1,38 @@
+<footer class="footer">
+    <div class="container-fluid p-5">
+        <div class="row">
+        {# Logo #}
+            <div class="col-lg-3 d-flex justify-content-center">
+                <img src="{{ asset('images/logo/logo-footer.jpg') }}" alt="logo" class="logo-footer align-self-center hidden">
+            </div>
+        {# Address #}
+            <div class="col-lg-3 col-sm-6 col-xs-12 d-flex justify-content-start flex-column align-items-center">
+                <ul class="list-unstyled">    
+                    <li class="fw-bold text-white m-0 text-center small-font m-1">Venir au parc</li>
+                    <li class="light-blue text-center">Domaine du Faubourg</li>
+                    <li class="light-blue text-center">35380 Paimpont</li>
+                    <li class="yellow text-center"><a href="{{ path('app_location') }}" class="yellow">Nous trouver ici</a></li>
+                    <li class="yellow text-center"><a href="{{ path('app_opening_hours') }}" class="yellow">Nos horaires d'ouverture</a></li>
+                </ul>   
+            </div>
+        {# Contact #}
+            <div class="col-lg-3 col-sm-6 col-xs-12 d-flex justify-content-start flex-column align-items-center">
+                <ul class="list-unstyled">    
+                    <li class="fw-bold text-white m-0 text-center small-font m-1"> Nous contacter</li>
+                    <li class="light-blue text-left text-center">02 39 82 05 90</li>
+                    <li class="text-center"><a href="{{ path('app_contact') }}" class="yellow">Nous écrire ici</a></li>
+                </ul>   
+            </div>
+        {# Socials #}
+            <div class="col-lg-3 col-sm-12 d-flex justify-content-center flex-column align-items-center">
+                <p class="text-center englebert-regular text-white small-font m-1">Suivez-nous sur les réseaux !</p>
+                <div class="d-flex justify-content-start">
+                    <a href="#"><img class="m-2 socials hover-translate" src="{{ asset('images/logo/instagram.svg') }}" alt="logo instagram"></a>
+                    <a href="#"><img class="m-2 socials hover-translate" src="{{ asset('images/logo/twitter.svg') }}" alt="logo twitter"></a>
+                    <a href="#"><img class="m-2 socials hover-translate" src="{{ asset('images/logo/facebook.svg') }}" alt="logo facebook"></a>
+                    <a href="#"><img class="m-2 socials hover-translate" src="{{ asset('images/logo/x.png') }}" alt="logo twitter"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,43 @@
+<div class="container-fluid mt-3">
+    <div class="table-responsive-md">
+        <table class="table table-striped table-hover">
+            <caption>Rapports vétérinaire</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Animal</th>
+                    <th scope="col">Espèce</th>
+                    <th scope="col">Par</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in reports %}
+                <tr>
+                    <td>{{ report.visitDate|date("d/m/Y") }}</td>
+                    <td>{{ report.animal }}</td>
+                    <td>{{ report.animal.species }}</td>
+                    <td>{{ report.user }}</td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <ul>
+                            <li>
+                                <span class="fw-bold">Etat :</span> {{ report.animalCondition }}
+                            </li>
+                            <li>
+                                <span class="fw-bold">Nourriture proposée :</span> {{ report.suggestedFood }}
+                            </li>
+                            <li>
+                                <span class="fw-bold">Quantité :</span> {{ report.foodQuantity }}g
+                            </li>
+                            <li>
+                                <span class="fw-bold">Etat détaillé :</span> {{ report.animalConditionDetail }}
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

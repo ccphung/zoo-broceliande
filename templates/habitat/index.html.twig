@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les habitats | Arcadia Zoo{% endblock %}
+
+{% block body %}
+
+<div class="habitat-container p-5">
+    <h1 class="large-font englebert-regular blue text-center green">Exploration des Écosystèmes</h1>
+    <div class="green-separator"></div>
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center ">
+        {% for habitat in habitats %}
+            <div class="col-lg-5 col-sm-12">
+                <h2 class="medium-font text-white text-center mt-5">{{habitat.name}}</h2>
+                <div class="card">
+                    <div class="card bg-dark text-white">
+                        <img src="{{ asset(vich_uploader_asset(habitat)) }}" alt="{{ habitat.imageName }}" class="card-img">
+                    </div>
+                    
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <a href="{{ path('habitat_details', {"slug": habitat.name}) }}" class="btn btn-yellow">Je visite l'habitat ></a>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+</div>
+
+{% endblock %}
