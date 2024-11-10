@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Horaires | Arcadia Zoo{% endblock %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center">
+    <div class="hidden m-5">
+        <img src="{{asset('images/animal/girafe2.jpg')}}" alt="toucan" class="medium-circle ms-5">
+    </div>
+
+    <div class="m-5">
+        <h1 class="text-center large-font englebert-regular light-blue">Horaires du parc</h1>
+        <div class="lightblue-separator mb-5"></div>
+            {% for hour in hours %}
+                <p class="text-center small-font"><span class="fw-bold">{{ hour.day }}</span> : {{ hour.open }} - {{ hour.close }}</p>
+            {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
