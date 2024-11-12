@@ -24,7 +24,7 @@ services:
   php:
     container_name: php
     build: 
-      context: ./php
+      context: .
     ports:
       - 8081:80
     volumes:
