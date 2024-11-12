@@ -3,8 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenue au Zoo Broceliande{% endblock %}</title>
         <link rel="icon" href="{{ asset('images/logo/thumbnail.png') }}">
+
+        {# Métadonnées pour le SEO #}
+        <meta name="description" content="Bienvenue au Zoo Broceliande, une expérience sauvage magique où vous pouvez explorer diverses espèces animales dans un cadre naturel magnifique.">
+        <meta name="keywords" content="zoo, faune, animaux, conservation, nature, famille, Zoo Broceliande, parc animalier, animaux exotiques">
+        <meta name="author" content="Équipe du Zoo Broceliande">
 
         {# Style sheets #}
         {% block stylesheets %}
