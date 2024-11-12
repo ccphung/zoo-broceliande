@@ -36,6 +36,7 @@ class AnimalFixtures extends Fixture implements DependentFixtureInterface
             $animal->setName($animalData['name']);
             $animal->setHabitat($this->getReference($animalData['habitat']));
             $animal->setSpecies($this->getReference($animalData['species']));
+            $animal->setDetail($animalData['name']);
             $animal->setImageFile(new UploadedFile($animalData['image'], $animalData['image'], 'blob', UPLOAD_ERR_OK, true));
             $manager->persist($animal);
 
