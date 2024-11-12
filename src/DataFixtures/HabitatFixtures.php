@@ -51,6 +51,7 @@ class HabitatFixtures extends Fixture
             $habitat->setName($habitatData['name']);
             $habitat->setDescription($habitatData['description']);
             $habitat->setImageName($habitatData['imageName']);
+            $habitat->setArea(random_int(7,23));
             $habitat->setImageFile(new UploadedFile(
                 $habitatData['imagePath'],
                 $habitatData['imageName'],
