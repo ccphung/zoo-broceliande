@@ -12,6 +12,6 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www
 
-RUN curl -sSk https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-curl -sSf https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin/symfony \
-curl -s https://cli-assets.heroku.com/install.sh | sh
+RUN curl -sSk https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+    curl -sSf https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin/symfony && \
+    curl -s https://cli-assets.heroku.com/install.sh | sh
