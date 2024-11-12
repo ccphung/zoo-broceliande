@@ -25,3 +25,7 @@
 ###< symfony/asset-mapper ###
 
 mysql/mysql.sock
+
+# Ignore MongoDB and MySQL data directories
+/mongo/
+/mysql/
