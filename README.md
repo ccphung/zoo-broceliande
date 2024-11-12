@@ -21,15 +21,32 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
     - Exemple de configuration pour MySQL et MongoDB dans `.env.local` :
     
     ```ini
+    # Base de données MySQL
     CLEARDB_DATABASE_URL="mysql://<db_user>:<db_password>@mysql/zoo?serverVersion=8.0"
+
+    # Base de données MongoDB
     MONGODB_URL="mongodb://<db_user>:<db_password>@mongo:27017/zoo?authSource=admin"
     MONGODB_DB="zoo"
+
+	# Variables d'environnement pour MySQL
+    MYSQL_ROOT_PASSWORD=<db_root>
+    MYSQL_DATABASE=zoo 
+    MYSQL_USER=<db_user>
+    MYSQL_PASSWORD=<db_password>
+    
+	# Variables pour PhpMyAdmin
+    PMA_USER=<db_user>
+    PMA_PASSWORD=<db_password>
+
+	# Variables d'environnement pour MongoDB
+    MONGO_INITDB_ROOT_USERNAME=<db_user>
+    MONGO_INITDB_ROOT_PASSWORD=<db_password>
     ```
-
     Remplacez les valeurs suivantes par vos informations spécifiques :
-    - `<db_user>` : nom d'utilisateur pour MySQL et MongoDB
+    - `<db_user>` : nom d'utilisateur pour MySQL, MongoDB et PhpMyAdmin
     - `<db_password>` : mot de passe pour MySQL et MongoDB
-
+    - `<db_root>` : mot de passe du root pour MySQL
+ 
 3. **Configurer Mailtrap pour les Emails :**
     - Créez un compte sur [Mailtrap](https://mailtrap.io/).
     - Une fois connecté, allez dans "Email Testing" puis "Inboxes" et récupérez vos identifiants SMTP.
@@ -57,17 +74,6 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
     - `<aws_region>` : la région AWS, par exemple `us-west-1`
     - `<your_aws_secret_access_key>` : votre clé secrète AWS
     - `<your_aws_access_key_id>` : votre ID de clé d'accès AWS
-  
-   **Exemple de fichier .env.local complet**
-    ```ini
-	CLEARDB_DATABASE_URL="mysql://root:example@mysql/zoo"
-	MONGODB_URL="mongodb://root:example@mongo:27017/zoo?authSource=admin"
-	MAILER_DSN=smtp://username:password@smtp.mailtrap.io:2525
-	AWS_BUCKET_NAME=mybucketname
-	AWS_REGION=us-west-1
-	AWS_SECRET_ACCESS_KEY=your_secret_key
-	AWS_ACCESS_KEY_ID=your_access_key
-    ```
        
 ## Exécution du Projet en Local avec Docker
 1. **Démarrer les services Docker avec Docker Compose :**
