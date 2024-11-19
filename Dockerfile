@@ -1,14 +1,14 @@
 FROM php:8.2-apache
 
 RUN apt-get update \
-    && apt-get install -y git libicu-dev zip libssl-dev libzip-dev\
+    && apt-get install -y git libicu-dev libssl-dev libzip-dev zip \
     && docker-php-ext-install opcache pdo pdo_mysql intl \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip \
     && pecl install mongodb \
-    && docker-php-ext-enable mongodb
-
-RUN a2enmod rewrite
+    && docker-php-ext-enable mongodb \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* \
+    && a2enmod rewrite
 
 WORKDIR /var/www
 
