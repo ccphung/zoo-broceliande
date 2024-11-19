@@ -33,6 +33,7 @@ class VetReport
     private ?Food $suggestedFood = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "La quantité ne peut pas être vide.")]
     #[Assert\Type(type: "numeric", message: "La quantité doit être un nombre.")]
     #[Assert\GreaterThanOrEqual(value: 1, message: "La quantité doit être supérieure ou égale à 1.")]
     private ?int $foodQuantity = null;
