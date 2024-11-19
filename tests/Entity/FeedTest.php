@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class FeedTest extends KernelTestCase
 {
-    public function testQuantityValidation(): void
+    public function testWithFoodandAnimalNull(): void
     {
         $kernel = self::bootKernel();
         $container = self::getContainer();
@@ -17,21 +17,44 @@ class FeedTest extends KernelTestCase
 
         $feed = new Feed();
         $feed->setQuantity(10);
+        $feed->setAnimal(null);
+        $feed->setDate(new \DateTime('-1 day'));
+        $feed->setFood(null);
 
         $errors = $validator->validate($feed);
-        $this->assertCount(0, $errors); 
+        $this->assertCount(2, $errors);
+
+        $errorMessages = array_map(function ($error) {
+            return $error->getMessage();
+        }, iterator_to_array($errors));
+    
+        $this->assertContains('L\'animal est obligatoire.', $errorMessages);
+        $this->assertContains('La nourriture est obligatoire.', $errorMessages);
+
+    }
+
+    public function testWithNegativeQuantityFutureDateAndFoodAndAnimalNull(): void
+    {
+        $kernel = self::bootKernel();
+        $container = self::getContainer();
+
+        $validator = $container->get(ValidatorInterface::class);
 
         $feed = new Feed();
         $feed->setQuantity(-5);
+        $feed->setDate(new \DateTime('+1 day'));
         $errors = $validator->validate($feed);
-        $this->assertCount(1, $errors); 
 
-        $this->assertEquals('La quantité doit être supérieure ou égale à 0.', $errors[0]->getMessage());
-        
-        $feed = new Feed();
-        $feed->setQuantity(0);
+        // excepted errors on food null, animal null, quantity negative and future date
+        $this->assertCount(4, $errors);
 
-        $errors = $validator->validate($feed);
-        $this->assertCount(0, $errors);
+        $errorMessages = array_map(function ($error) {
+            return $error->getMessage();
+        }, iterator_to_array($errors));
+
+        $this->assertContains('La quantité doit être supérieure ou égale à 1.', $errorMessages);
+        $this->assertContains('La date ne peut pas être dans le futur.', $errorMessages);
+        $this->assertContains('L\'animal est obligatoire.', $errorMessages);
+        $this->assertContains('La nourriture est obligatoire.', $errorMessages);
     }
 }
