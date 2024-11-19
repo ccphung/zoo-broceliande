@@ -39,7 +39,7 @@ class VetReport
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Assert\NotBlank(message: "La date de la visite est obligatoire.")]
     #[Assert\LessThanOrEqual(
-        value: "today",
+        value: "now",
         message: "La date de la visite ne peut pas être dans le futur."
     )]
     private ?\DateTimeInterface $visitDate = null;
