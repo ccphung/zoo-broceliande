@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: HabitatRepository::class)]
@@ -20,12 +21,19 @@ class Habitat
     private ?int $id = null;
     
     #[Vich\UploadableField (mapping: 'habitat', fileNameProperty: 'imageName')]
+    #[Assert\NotNull(message: "Veuillez ajouter une image.")]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: "Le nom est obligatoire.")]
+    #[Assert\Length(
+        max: 50,
+        maxMessage: "Le nom ne peut pas dépasser {{ limit }} caractères."
+    )]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: "La description est obligatoire.")]
     private ?string $description = null;
 
     /**
@@ -35,15 +43,25 @@ class Habitat
     private Collection $animals;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le nom de l'image est obligatoire.")]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: "Le nom de l'image ne peut pas dépasser {{ limit }} caractères."
+    )]
     private ?string $imageName = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[Assert\NotNull(message: "La date de mise à jour est obligatoire.")]
+    #[Assert\Type(\DateTimeImmutable::class, message: "La date doit être valide.")]
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $habitatRemark = null;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: "La superficie est obligatoire.")]
+    #[Assert\Type(type: "numeric", message: "La superficie doit être un nombre.")]
+    #[Assert\Positive(message: "La superficie doit être un nombre positif.")]
     private ?int $area = null;
 
     public function __construct()

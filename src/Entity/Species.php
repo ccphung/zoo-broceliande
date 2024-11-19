@@ -6,6 +6,7 @@ use App\Repository\SpeciesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SpeciesRepository::class)]
 class Species
@@ -16,6 +17,11 @@ class Species
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: "Le label de l'espèce est obligatoire.")]
+    #[Assert\Length(
+        max: 50,
+        maxMessage: "Le label de l'espèce ne peut pas dépasser {{ limit }} caractères."
+    )]
     private ?string $label = null;
 
     /**

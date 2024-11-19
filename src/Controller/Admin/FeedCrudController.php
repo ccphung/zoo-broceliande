@@ -15,9 +15,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\Validator\Constraints\LessThanOrEqual;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Positive;
 
 #[IsGranted(new Expression('is_granted("ROLE_EMPLOYE") or is_granted("ROLE_VET")'))]
 
@@ -51,34 +48,16 @@ class FeedCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             AssociationField::new('animal')
-                ->setLabel('Animal')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
-
+                ->setLabel('Animal'),
             TextField::new('animal.species', 'Species')
                 ->setLabel('Espèce')
                 ->onlyOnIndex()
                 ->setRequired(false),
-
             AssociationField::new('food')
-                ->setLabel('Nourriture')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
+                ->setLabel('Nourriture'),
             IntegerField::new('quantity')
-                ->setLabel('Quantité (en grammes)')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide']),
-                    new Positive(['message' => "Veuillez entrer un nombre positif"])
-                ]),
+                ->setLabel('Quantité (en grammes)'),
             DateTimeField::new('date', 'Date et Heure')
-                ->setFormTypeOption('constraints', [
-                    new LessThanOrEqual([
-                        'value' => 'now',
-                        'message' => 'La date et l\'heure doivent être antérieures ou égales à la date actuelle'
-                    ])
-                ]),
         ];
     }
 

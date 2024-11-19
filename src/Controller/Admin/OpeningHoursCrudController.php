@@ -9,7 +9,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[IsGranted('ROLE_ADMIN')]
 
@@ -41,19 +40,10 @@ class OpeningHoursCrudController extends AbstractCrudController
     {
         return [
             TextField::new('Day')
-                ->setLabel('Jour')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
+                ->setLabel('Jour'),
             TextField::new('Open')
-                ->setLabel('Ouverture')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
-            TextField::new('Close')->setLabel('Fermeture')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
+                ->setLabel('Ouverture'),
+            TextField::new('Close')->setLabel('Fermeture'),
         ];
     }
 }

@@ -103,30 +103,16 @@ class UserCrudController extends AbstractCrudController
 
         $fields = [
             TextField::new('firstName')
-                ->setLabel('Prénom')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
+                ->setLabel('Prénom'),
             TextField::new('lastname')
-                ->setLabel('Nom de famille')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
+                ->setLabel('Nom de famille'),
             EmailField::new('username')
-                ->setLabel('Email')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
+                ->setLabel('Email'),
             ChoiceField::new('roles', 'Rôles')
                 ->setChoices($roles)
                 ->allowMultipleChoices(true)
                 ->renderExpanded(true) 
-                ->onlyOnForms()
-                ->setFormTypeOptions([
-                    'constraints' => [
-                        new NotBlank(['message' => 'Veuillez choisir au moins une option'])
-                    ]
-                ]),
+                ->onlyOnForms(),
         ];
 
         if ($pageName === Crud::PAGE_NEW || $pageName === Crud::PAGE_EDIT) {

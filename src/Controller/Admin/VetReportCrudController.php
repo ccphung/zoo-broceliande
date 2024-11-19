@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\VetReport;
-use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
@@ -16,11 +15,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\Validator\Constraints\LessThanOrEqual;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotNull;
-use Symfony\Component\Validator\Constraints\Positive;
-use Symfony\Component\Validator\Constraints\PositiveOrZero;
 
 #[IsGranted('ROLE_VET')]
 class VetReportCrudController extends AbstractCrudController implements EventSubscriberInterface
@@ -67,10 +61,6 @@ class VetReportCrudController extends AbstractCrudController implements EventSub
                 ->setColumns(3),
             IntegerField::new('FoodQuantity')
                 ->setLabel('Quantité (en grammes)')
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide']),
-                    new Positive(['message' => "Veuillez entrer un nombre positif"])
-                ])
                 ->setColumns(3),
             FormField::addRow(),
             TextareaField::new('animalConditionDetail')
@@ -79,13 +69,7 @@ class VetReportCrudController extends AbstractCrudController implements EventSub
                 ->hideOnIndex(),
             DateTimeField::new('visitDate')
                 ->setLabel('Date de la visite')
-                ->setColumns(3)
-                ->setFormTypeOption('constraints', [
-                    new LessThanOrEqual([
-                        'value' => 'now',
-                        'message' => 'Veuillez entrer une date et une heure antérieures à maintenant.'
-                    ])
-                ]),
+                ->setColumns(3),
             AssociationField::new('user')
                 ->setLabel('Par')
                 ->setColumns(3)

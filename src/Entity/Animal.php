@@ -9,9 +9,11 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AnimalRepository::class)]
 #[Vich\Uploadable]
+
 class Animal
 {
     #[ORM\Id]
@@ -20,18 +22,31 @@ class Animal
     private ?int $id = null;
 
     #[Vich\UploadableField (mapping: 'animal', fileNameProperty: 'imageName')]
+    #[Assert\File(
+        maxSize: "2M",
+        maxSizeMessage: "L'image ne peut pas dépasser 2 Mo.",
+        mimeTypes: ["image/jpeg", "image/png"],
+        mimeTypesMessage: "Seuls les fichiers JPEG ou PNG sont autorisés."
+    )]
     private ?File $imageFile = null;
 
     #[ORM\Column(type: 'string', length: 50)]
+    #[Assert\NotBlank(message: "Le nom de l'animal est obligatoire.")]
+    #[Assert\Length(
+        max: 50,
+        maxMessage: "Le nom de l'animal ne peut pas dépasser 50 caractères."
+    )]
     private ?string $name = null;
 
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull(message: "L'habitat est obligatoire.")]
     private ?Habitat $habitat = null;
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull(message: "L'espèce est obligatoire.")]
     private ?Species $species = null;
 
     /**
@@ -41,6 +56,7 @@ class Animal
     private Collection $vetReport;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le nom de l'image est obligatoire.")]
     private ?string $imageName = null;
 
     #[ORM\Column]

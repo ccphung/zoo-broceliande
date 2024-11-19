@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\FeedRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: FeedRepository::class)]
 class Feed
@@ -16,16 +17,23 @@ class Feed
 
     #[ORM\ManyToOne(inversedBy: 'feeds')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull(message: "La nourriture est obligatoire.")]
     private ?Food $food = null;
 
     #[ORM\ManyToOne(inversedBy: 'feeds')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull(message: "L'animal est obligatoire.")]
     private ?Animal $animal = null;
 
     #[ORM\Column]
+    #[Assert\Type(type: "numeric", message: "La quantité doit être un nombre.")]
+    #[Assert\GreaterThanOrEqual(value: 0, message: "La quantité doit être supérieure ou égale à 0.")]
     private ?int $quantity = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotNull(message: "La date est obligatoire.")]
+    #[Assert\Type(\DateTimeInterface::class, message: "La date doit être valide.")]
+    #[Assert\LessThanOrEqual("now", message: "La date ne peut pas être dans le futur.")]
     private ?\DateTimeInterface $date = null;
 
     public function __construct()

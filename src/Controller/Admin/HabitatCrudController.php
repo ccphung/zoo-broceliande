@@ -13,9 +13,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Positive;
-use Symfony\Component\Validator\Constraints\PositiveOrZero;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
 #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_VET")'))]
@@ -62,49 +59,29 @@ class HabitatCrudController extends AbstractCrudController
         return [
             TextField::new('name')
                 ->setLabel('Nom')
-                ->setDisabled($isVet)
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
-
+                ->setDisabled($isVet),
             TextareaField::new('description')
                 ->setLabel('Description')
-                ->setDisabled($isVet)
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
+                ->setDisabled($isVet),
 
             IntegerField::new('area')
                 ->setLabel('Superficie (km²)')
-                ->setDisabled($isVet)
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide']),
-                    new Positive(['message' => "Veuillez entrer un nombre positif"])
-                ]),
+                ->setDisabled($isVet),
 
             TextField::new('imageName')
                 ->setLabel('Nom de l\'image')
                 ->hideOnIndex()
-                ->setDisabled($isVet)
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
+                ->setDisabled($isVet),
 
             TextField::new('imageFile')
                 ->setLabel('Image')
                 ->setFormType(VichFileType::class)
                 ->hideOnIndex()
-                ->setDisabled($isVet)
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Veuillez ajouter une image'])
-                ]),
+                ->setDisabled($isVet),
 
             TextareaField::new('habitatRemark')
                 ->setLabel('Remarque sur l\'habitat')
-                ->setDisabled($isAdmin)
-                ->setFormTypeOption('constraints', [
-                    new NotBlank(['message' => 'Ce champ ne peut pas être vide'])
-                ]),
+                ->setDisabled($isAdmin),
         ];
     }
 }

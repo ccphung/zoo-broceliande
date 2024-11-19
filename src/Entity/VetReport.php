@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\VetReportRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: VetReportRepository::class)]
 class VetReport
@@ -23,16 +24,24 @@ class VetReport
     private ?Animal $animal = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "L'état de l'animal ne peut pas être vide.")]
     private ?string $animalCondition = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull(message: "La nourriture suggérée ne peut pas être nulle.")]
     private ?Food $suggestedFood = null;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: "La nourriture ne peut pas être nulle.")]
     private ?int $foodQuantity = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message: "La date de la visite est obligatoire.")]
+    #[Assert\LessThanOrEqual(
+        value: "today",
+        message: "La date de la visite ne peut pas être dans le futur."
+    )]
     private ?\DateTimeInterface $visitDate = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
