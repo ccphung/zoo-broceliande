@@ -33,7 +33,8 @@ class VetReport
     private ?Food $suggestedFood = null;
 
     #[ORM\Column]
-    #[Assert\NotNull(message: "La nourriture ne peut pas être nulle.")]
+    #[Assert\Type(type: "numeric", message: "La quantité doit être un nombre.")]
+    #[Assert\GreaterThanOrEqual(value: 1, message: "La quantité doit être supérieure ou égale à 1.")]
     private ?int $foodQuantity = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]

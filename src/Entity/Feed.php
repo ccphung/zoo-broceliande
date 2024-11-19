@@ -27,7 +27,7 @@ class Feed
 
     #[ORM\Column]
     #[Assert\Type(type: "numeric", message: "La quantité doit être un nombre.")]
-    #[Assert\GreaterThanOrEqual(value: 0, message: "La quantité doit être supérieure ou égale à 0.")]
+    #[Assert\GreaterThanOrEqual(value: 1, message: "La quantité doit être supérieure ou égale à 1.")]
     private ?int $quantity = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
